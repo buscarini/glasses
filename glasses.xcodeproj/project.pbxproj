@@ -1,0 +1,1281 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 47;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52D6D9871BEFF229002C0205 /* glasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* glasses.framework */; };
+		8933C78E1EB5B82C000D00A4 /* glassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* glassesTests.swift */; };
+		8933C78F1EB5B82C000D00A4 /* glassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* glassesTests.swift */; };
+		8933C7901EB5B82D000D00A4 /* glassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* glassesTests.swift */; };
+		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
+		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
+		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
+		ACB2F5DA23CC8F3B00C93822 /* Lens+Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D323CC8F3A00C93822 /* Lens+Tuple.swift */; };
+		ACB2F5DB23CC8F3B00C93822 /* Lens+Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D423CC8F3B00C93822 /* Lens+Getter.swift */; };
+		ACB2F5DC23CC8F3B00C93822 /* Lens+Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D523CC8F3B00C93822 /* Lens+Setter.swift */; };
+		ACB2F5E023CC8F4100C93822 /* MLens+Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DD23CC8F4100C93822 /* MLens+Constructor.swift */; };
+		ACB2F5E123CC8F4100C93822 /* MLens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DE23CC8F4100C93822 /* MLens+Composition.swift */; };
+		ACB2F5E223CC8F4100C93822 /* MLens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DF23CC8F4100C93822 /* MLens.swift */; };
+		ACB2F5ED23CC8F5100C93822 /* Prism+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */; };
+		ACB2F5EE23CC8F5100C93822 /* Prism.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E423CC8F5000C93822 /* Prism.swift */; };
+		ACB2F5EF23CC8F5100C93822 /* Prism+As.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E523CC8F5000C93822 /* Prism+As.swift */; };
+		ACB2F5F023CC8F5100C93822 /* Prism+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */; };
+		ACB2F5F123CC8F5100C93822 /* Prism+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */; };
+		ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */; };
+		ACB2F5F423CC8F5100C93822 /* Prism+Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */; };
+		ACB2F5F523CC8F5100C93822 /* Lens+Prism.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5EB23CC8F5000C93822 /* Lens+Prism.swift */; };
+		ACB2F5F623CC8F5100C93822 /* Prism+Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5EC23CC8F5000C93822 /* Prism+Getter.swift */; };
+		ACB2F5FA23CC8F5B00C93822 /* Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5F723CC8F5B00C93822 /* Getter.swift */; };
+		ACB2F5FB23CC8F5B00C93822 /* Optic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5F823CC8F5B00C93822 /* Optic.swift */; };
+		ACB2F5FC23CC8F5B00C93822 /* Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5F923CC8F5B00C93822 /* Setter.swift */; };
+		ACB2F5FE23CC8F6900C93822 /* MSetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5FD23CC8F5E00C93822 /* MSetters.swift */; };
+		ACB2F60723CC8F7200C93822 /* Lens+Traversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5FF23CC8F7200C93822 /* Lens+Traversal.swift */; };
+		ACB2F60823CC8F7200C93822 /* Traversal+Setter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60023CC8F7200C93822 /* Traversal+Setter.swift */; };
+		ACB2F60923CC8F7200C93822 /* Traversal+Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60123CC8F7200C93822 /* Traversal+Getter.swift */; };
+		ACB2F60A23CC8F7200C93822 /* Traversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60223CC8F7200C93822 /* Traversal.swift */; };
+		ACB2F60B23CC8F7200C93822 /* Traversal+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60323CC8F7200C93822 /* Traversal+Array.swift */; };
+		ACB2F60C23CC8F7200C93822 /* Traversal+Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60423CC8F7200C93822 /* Traversal+Tuple.swift */; };
+		ACB2F60D23CC8F7300C93822 /* Traversal+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60523CC8F7200C93822 /* Traversal+Composition.swift */; };
+		ACB2F60E23CC8F7300C93822 /* Prism+Traversal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60623CC8F7200C93822 /* Prism+Traversal.swift */; };
+		ACB2F61023CC8FD000C93822 /* Prelude.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F60F23CC8FD000C93822 /* Prelude.swift */; };
+		ACB2F61323CC900000C93822 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61223CC900000C93822 /* Operators.swift */; };
+		ACB2F61523CC900300C93822 /* PrecedenceGroups.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61423CC900300C93822 /* PrecedenceGroups.swift */; };
+		ACB2F61723CC901700C93822 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61623CC901700C93822 /* Application.swift */; };
+		ACB2F61923CC906A00C93822 /* Iso.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61823CC906A00C93822 /* Iso.swift */; };
+		ACB2F61B23CC91E000C93822 /* Lens+Iso.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61A23CC91E000C93822 /* Lens+Iso.swift */; };
+		ACB2F62423CC942000C93822 /* LensCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61D23CC941900C93822 /* LensCompositionTests.swift */; };
+		ACB2F62523CC942000C93822 /* LensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62323CC941A00C93822 /* LensTests.swift */; };
+		ACB2F62623CC942000C93822 /* MLensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61C23CC941900C93822 /* MLensTests.swift */; };
+		ACB2F62723CC942000C93822 /* OpticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62023CC941900C93822 /* OpticTests.swift */; };
+		ACB2F62823CC942000C93822 /* PrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62223CC941A00C93822 /* PrismTests.swift */; };
+		ACB2F62923CC942000C93822 /* TraversalCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */; };
+		ACB2F62A23CC942000C93822 /* TraversalPrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */; };
+		ACB2F62B23CC942000C93822 /* TraversalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61E23CC941900C93822 /* TraversalTests.swift */; };
+		ACB2F62E23CC942B00C93822 /* IsoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62C23CC942800C93822 /* IsoTests.swift */; };
+		ACB2F62F23CC943300C93822 /* LensCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61D23CC941900C93822 /* LensCompositionTests.swift */; };
+		ACB2F63023CC943300C93822 /* LensCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61D23CC941900C93822 /* LensCompositionTests.swift */; };
+		ACB2F63123CC943300C93822 /* TraversalCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */; };
+		ACB2F63223CC943300C93822 /* TraversalCompositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */; };
+		ACB2F63323CC943300C93822 /* TraversalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61E23CC941900C93822 /* TraversalTests.swift */; };
+		ACB2F63423CC943300C93822 /* TraversalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F61E23CC941900C93822 /* TraversalTests.swift */; };
+		ACB2F63523CC943300C93822 /* PrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62223CC941A00C93822 /* PrismTests.swift */; };
+		ACB2F63623CC943300C93822 /* PrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62223CC941A00C93822 /* PrismTests.swift */; };
+		ACB2F63723CC943300C93822 /* TraversalPrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */; };
+		ACB2F63823CC943300C93822 /* TraversalPrismTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */; };
+		ACB2F63B23CC943300C93822 /* LensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62323CC941A00C93822 /* LensTests.swift */; };
+		ACB2F63C23CC943300C93822 /* LensTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62323CC941A00C93822 /* LensTests.swift */; };
+		ACB2F63D23CC943300C93822 /* IsoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62C23CC942800C93822 /* IsoTests.swift */; };
+		ACB2F63E23CC943300C93822 /* IsoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62C23CC942800C93822 /* IsoTests.swift */; };
+		ACB2F63F23CC943300C93822 /* OpticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62023CC941900C93822 /* OpticTests.swift */; };
+		ACB2F64023CC943300C93822 /* OpticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F62023CC941900C93822 /* OpticTests.swift */; };
+		ACB2F64223CC944800C93822 /* Iso+Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F64123CC944800C93822 /* Iso+Numeric.swift */; };
+		ACB2F64423CC9ACF00C93822 /* Iso+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F64323CC9ACF00C93822 /* Iso+Composition.swift */; };
+		ACB2F64623CCB6BD00C93822 /* Traversal+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F64523CCB6BD00C93822 /* Traversal+Utils.swift */; };
+		DD7502881C68FEDE006590AF /* glasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6DA0F1BF000BD002C0205 /* glasses.framework */; };
+		DD7502921C690C7A006590AF /* glasses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D9F01BEFFFBE002C0205 /* glasses.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D6D97B1BEFF229002C0205;
+			remoteInfo = glasses;
+		};
+		DD7502801C68FCFC006590AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D6DA0E1BF000BD002C0205;
+			remoteInfo = "glasses-macOS";
+		};
+		DD7502931C690C7A006590AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D6D9731BEFF229002C0205 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D6D9EF1BEFFFBE002C0205;
+			remoteInfo = "glasses-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52D6D97C1BEFF229002C0205 /* glasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = glasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D6D9861BEFF229002C0205 /* glasses-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "glasses-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D6D9E21BEFFF6E002C0205 /* glasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = glasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D6D9F01BEFFFBE002C0205 /* glasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = glasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D6DA0F1BF000BD002C0205 /* glasses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = glasses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8933C7891EB5B82A000D00A4 /* glassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = glassesTests.swift; sourceTree = "<group>"; };
+		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
+		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
+		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
+		ACB2F5D323CC8F3A00C93822 /* Lens+Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Tuple.swift"; sourceTree = "<group>"; };
+		ACB2F5D423CC8F3B00C93822 /* Lens+Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Getter.swift"; sourceTree = "<group>"; };
+		ACB2F5D523CC8F3B00C93822 /* Lens+Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Setter.swift"; sourceTree = "<group>"; };
+		ACB2F5DD23CC8F4100C93822 /* MLens+Constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLens+Constructor.swift"; sourceTree = "<group>"; };
+		ACB2F5DE23CC8F4100C93822 /* MLens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLens+Composition.swift"; sourceTree = "<group>"; };
+		ACB2F5DF23CC8F4100C93822 /* MLens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLens.swift; sourceTree = "<group>"; };
+		ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Array.swift"; sourceTree = "<group>"; };
+		ACB2F5E423CC8F5000C93822 /* Prism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prism.swift; sourceTree = "<group>"; };
+		ACB2F5E523CC8F5000C93822 /* Prism+As.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+As.swift"; sourceTree = "<group>"; };
+		ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Optional.swift"; sourceTree = "<group>"; };
+		ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Dictionary.swift"; sourceTree = "<group>"; };
+		ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Composition.swift"; sourceTree = "<group>"; };
+		ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Setter.swift"; sourceTree = "<group>"; };
+		ACB2F5EB23CC8F5000C93822 /* Lens+Prism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Prism.swift"; sourceTree = "<group>"; };
+		ACB2F5EC23CC8F5000C93822 /* Prism+Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Getter.swift"; sourceTree = "<group>"; };
+		ACB2F5F723CC8F5B00C93822 /* Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getter.swift; sourceTree = "<group>"; };
+		ACB2F5F823CC8F5B00C93822 /* Optic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Optic.swift; sourceTree = "<group>"; };
+		ACB2F5F923CC8F5B00C93822 /* Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setter.swift; sourceTree = "<group>"; };
+		ACB2F5FD23CC8F5E00C93822 /* MSetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MSetters.swift; sourceTree = "<group>"; };
+		ACB2F5FF23CC8F7200C93822 /* Lens+Traversal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Traversal.swift"; sourceTree = "<group>"; };
+		ACB2F60023CC8F7200C93822 /* Traversal+Setter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal+Setter.swift"; sourceTree = "<group>"; };
+		ACB2F60123CC8F7200C93822 /* Traversal+Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal+Getter.swift"; sourceTree = "<group>"; };
+		ACB2F60223CC8F7200C93822 /* Traversal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Traversal.swift; sourceTree = "<group>"; };
+		ACB2F60323CC8F7200C93822 /* Traversal+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal+Array.swift"; sourceTree = "<group>"; };
+		ACB2F60423CC8F7200C93822 /* Traversal+Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal+Tuple.swift"; sourceTree = "<group>"; };
+		ACB2F60523CC8F7200C93822 /* Traversal+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal+Composition.swift"; sourceTree = "<group>"; };
+		ACB2F60623CC8F7200C93822 /* Prism+Traversal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Traversal.swift"; sourceTree = "<group>"; };
+		ACB2F60F23CC8FD000C93822 /* Prelude.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prelude.swift; sourceTree = "<group>"; };
+		ACB2F61223CC900000C93822 /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		ACB2F61423CC900300C93822 /* PrecedenceGroups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrecedenceGroups.swift; sourceTree = "<group>"; };
+		ACB2F61623CC901700C93822 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		ACB2F61823CC906A00C93822 /* Iso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Iso.swift; sourceTree = "<group>"; };
+		ACB2F61A23CC91E000C93822 /* Lens+Iso.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lens+Iso.swift"; sourceTree = "<group>"; };
+		ACB2F61C23CC941900C93822 /* MLensTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLensTests.swift; sourceTree = "<group>"; };
+		ACB2F61D23CC941900C93822 /* LensCompositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensCompositionTests.swift; sourceTree = "<group>"; };
+		ACB2F61E23CC941900C93822 /* TraversalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraversalTests.swift; sourceTree = "<group>"; };
+		ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraversalCompositionTests.swift; sourceTree = "<group>"; };
+		ACB2F62023CC941900C93822 /* OpticTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpticTests.swift; sourceTree = "<group>"; };
+		ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraversalPrismTests.swift; sourceTree = "<group>"; };
+		ACB2F62223CC941A00C93822 /* PrismTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrismTests.swift; sourceTree = "<group>"; };
+		ACB2F62323CC941A00C93822 /* LensTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LensTests.swift; sourceTree = "<group>"; };
+		ACB2F62C23CC942800C93822 /* IsoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsoTests.swift; sourceTree = "<group>"; };
+		ACB2F64123CC944800C93822 /* Iso+Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iso+Numeric.swift"; sourceTree = "<group>"; };
+		ACB2F64323CC9ACF00C93822 /* Iso+Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iso+Composition.swift"; sourceTree = "<group>"; };
+		ACB2F64523CCB6BD00C93822 /* Traversal+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Traversal+Utils.swift"; sourceTree = "<group>"; };
+		AD2FAA261CD0B6D800659CF4 /* glasses.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = glasses.plist; sourceTree = "<group>"; };
+		AD2FAA281CD0B6E100659CF4 /* glassesTests.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = glassesTests.plist; sourceTree = "<group>"; };
+		DD75027A1C68FCFC006590AF /* glasses-macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "glasses-macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD75028D1C690C7A006590AF /* glasses-tvOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "glasses-tvOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52D6D9781BEFF229002C0205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9831BEFF229002C0205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D6D9871BEFF229002C0205 /* glasses.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9DE1BEFFF6E002C0205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9EC1BEFFFBE002C0205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6DA0B1BF000BD002C0205 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD7502771C68FCFC006590AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD7502881C68FEDE006590AF /* glasses.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD75028A1C690C7A006590AF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD7502921C690C7A006590AF /* glasses.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52D6D9721BEFF229002C0205 = {
+			isa = PBXGroup;
+			children = (
+				8933C7811EB5B7E0000D00A4 /* Sources */,
+				8933C7831EB5B7EB000D00A4 /* Tests */,
+				52D6D99C1BEFF38C002C0205 /* Configs */,
+				52D6D97D1BEFF229002C0205 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52D6D97D1BEFF229002C0205 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52D6D97C1BEFF229002C0205 /* glasses.framework */,
+				52D6D9861BEFF229002C0205 /* glasses-iOS Tests.xctest */,
+				52D6D9E21BEFFF6E002C0205 /* glasses.framework */,
+				52D6D9F01BEFFFBE002C0205 /* glasses.framework */,
+				52D6DA0F1BF000BD002C0205 /* glasses.framework */,
+				DD75027A1C68FCFC006590AF /* glasses-macOS Tests.xctest */,
+				DD75028D1C690C7A006590AF /* glasses-tvOS Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52D6D99C1BEFF38C002C0205 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				DD7502721C68FC1B006590AF /* Frameworks */,
+				DD7502731C68FC20006590AF /* Tests */,
+			);
+			path = Configs;
+			sourceTree = "<group>";
+		};
+		8933C7811EB5B7E0000D00A4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5CE23CC8F2300C93822 /* Iso */,
+				ACB2F5C923CC8F1200C93822 /* Lens */,
+				ACB2F5CB23CC8F1200C93822 /* MLens */,
+				ACB2F5CC23CC8F1200C93822 /* Prism */,
+				ACB2F5C823CC8F1200C93822 /* Protocols */,
+				ACB2F5CD23CC8F1200C93822 /* Setters */,
+				ACB2F5CA23CC8F1200C93822 /* Support Files */,
+				ACB2F5C623CC8F1200C93822 /* Traversal */,
+				ACB2F61123CC8FFB00C93822 /* Prelude */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8933C7831EB5B7EB000D00A4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F62C23CC942800C93822 /* IsoTests.swift */,
+				ACB2F61D23CC941900C93822 /* LensCompositionTests.swift */,
+				ACB2F62323CC941A00C93822 /* LensTests.swift */,
+				ACB2F61C23CC941900C93822 /* MLensTests.swift */,
+				ACB2F62023CC941900C93822 /* OpticTests.swift */,
+				ACB2F62223CC941A00C93822 /* PrismTests.swift */,
+				ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */,
+				ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */,
+				ACB2F61E23CC941900C93822 /* TraversalTests.swift */,
+				8933C7891EB5B82A000D00A4 /* glassesTests.swift */,
+			);
+			name = Tests;
+			path = Tests/glassesTests;
+			sourceTree = "<group>";
+		};
+		ACB2F5C623CC8F1200C93822 /* Traversal */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5FF23CC8F7200C93822 /* Lens+Traversal.swift */,
+				ACB2F60623CC8F7200C93822 /* Prism+Traversal.swift */,
+				ACB2F60223CC8F7200C93822 /* Traversal.swift */,
+				ACB2F64523CCB6BD00C93822 /* Traversal+Utils.swift */,
+				ACB2F60323CC8F7200C93822 /* Traversal+Array.swift */,
+				ACB2F60523CC8F7200C93822 /* Traversal+Composition.swift */,
+				ACB2F60123CC8F7200C93822 /* Traversal+Getter.swift */,
+				ACB2F60023CC8F7200C93822 /* Traversal+Setter.swift */,
+				ACB2F60423CC8F7200C93822 /* Traversal+Tuple.swift */,
+			);
+			path = Traversal;
+			sourceTree = "<group>";
+		};
+		ACB2F5C823CC8F1200C93822 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5F723CC8F5B00C93822 /* Getter.swift */,
+				ACB2F5F823CC8F5B00C93822 /* Optic.swift */,
+				ACB2F5F923CC8F5B00C93822 /* Setter.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		ACB2F5C923CC8F1200C93822 /* Lens */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5CF23CC8F3A00C93822 /* Lens.swift */,
+				ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */,
+				ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */,
+				ACB2F61A23CC91E000C93822 /* Lens+Iso.swift */,
+				ACB2F5D423CC8F3B00C93822 /* Lens+Getter.swift */,
+				ACB2F5D523CC8F3B00C93822 /* Lens+Setter.swift */,
+				ACB2F5D323CC8F3A00C93822 /* Lens+Tuple.swift */,
+			);
+			path = Lens;
+			sourceTree = "<group>";
+		};
+		ACB2F5CA23CC8F1200C93822 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		ACB2F5CB23CC8F1200C93822 /* MLens */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5DF23CC8F4100C93822 /* MLens.swift */,
+				ACB2F5DE23CC8F4100C93822 /* MLens+Composition.swift */,
+				ACB2F5DD23CC8F4100C93822 /* MLens+Constructor.swift */,
+			);
+			path = MLens;
+			sourceTree = "<group>";
+		};
+		ACB2F5CC23CC8F1200C93822 /* Prism */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5EB23CC8F5000C93822 /* Lens+Prism.swift */,
+				ACB2F5E423CC8F5000C93822 /* Prism.swift */,
+				ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */,
+				ACB2F5E523CC8F5000C93822 /* Prism+As.swift */,
+				ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */,
+				ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */,
+				ACB2F5EC23CC8F5000C93822 /* Prism+Getter.swift */,
+				ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */,
+				ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */,
+			);
+			path = Prism;
+			sourceTree = "<group>";
+		};
+		ACB2F5CD23CC8F1200C93822 /* Setters */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F5FD23CC8F5E00C93822 /* MSetters.swift */,
+			);
+			path = Setters;
+			sourceTree = "<group>";
+		};
+		ACB2F5CE23CC8F2300C93822 /* Iso */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F61823CC906A00C93822 /* Iso.swift */,
+				ACB2F64323CC9ACF00C93822 /* Iso+Composition.swift */,
+				ACB2F64123CC944800C93822 /* Iso+Numeric.swift */,
+			);
+			path = Iso;
+			sourceTree = "<group>";
+		};
+		ACB2F61123CC8FFB00C93822 /* Prelude */ = {
+			isa = PBXGroup;
+			children = (
+				ACB2F61623CC901700C93822 /* Application.swift */,
+				ACB2F61423CC900300C93822 /* PrecedenceGroups.swift */,
+				ACB2F61223CC900000C93822 /* Operators.swift */,
+				ACB2F60F23CC8FD000C93822 /* Prelude.swift */,
+			);
+			path = Prelude;
+			sourceTree = "<group>";
+		};
+		DD7502721C68FC1B006590AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD2FAA261CD0B6D800659CF4 /* glasses.plist */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD7502731C68FC20006590AF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				AD2FAA281CD0B6E100659CF4 /* glassesTests.plist */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		52D6D9791BEFF229002C0205 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9DF1BEFFF6E002C0205 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9ED1BEFFFBE002C0205 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6DA0C1BF000BD002C0205 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		52D6D97B1BEFF229002C0205 /* glasses-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D6D9901BEFF229002C0205 /* Build configuration list for PBXNativeTarget "glasses-iOS" */;
+			buildPhases = (
+				52D6D9771BEFF229002C0205 /* Sources */,
+				52D6D9781BEFF229002C0205 /* Frameworks */,
+				52D6D9791BEFF229002C0205 /* Headers */,
+				52D6D97A1BEFF229002C0205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glasses-iOS";
+			productName = glasses;
+			productReference = 52D6D97C1BEFF229002C0205 /* glasses.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		52D6D9851BEFF229002C0205 /* glasses-iOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D6D9931BEFF229002C0205 /* Build configuration list for PBXNativeTarget "glasses-iOS Tests" */;
+			buildPhases = (
+				52D6D9821BEFF229002C0205 /* Sources */,
+				52D6D9831BEFF229002C0205 /* Frameworks */,
+				52D6D9841BEFF229002C0205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52D6D9891BEFF229002C0205 /* PBXTargetDependency */,
+			);
+			name = "glasses-iOS Tests";
+			productName = glassesTests;
+			productReference = 52D6D9861BEFF229002C0205 /* glasses-iOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		52D6D9E11BEFFF6E002C0205 /* glasses-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D6D9E71BEFFF6E002C0205 /* Build configuration list for PBXNativeTarget "glasses-watchOS" */;
+			buildPhases = (
+				52D6D9DD1BEFFF6E002C0205 /* Sources */,
+				52D6D9DE1BEFFF6E002C0205 /* Frameworks */,
+				52D6D9DF1BEFFF6E002C0205 /* Headers */,
+				52D6D9E01BEFFF6E002C0205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glasses-watchOS";
+			productName = "glasses-watchOS";
+			productReference = 52D6D9E21BEFFF6E002C0205 /* glasses.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		52D6D9EF1BEFFFBE002C0205 /* glasses-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D6DA011BEFFFBE002C0205 /* Build configuration list for PBXNativeTarget "glasses-tvOS" */;
+			buildPhases = (
+				52D6D9EB1BEFFFBE002C0205 /* Sources */,
+				52D6D9EC1BEFFFBE002C0205 /* Frameworks */,
+				52D6D9ED1BEFFFBE002C0205 /* Headers */,
+				52D6D9EE1BEFFFBE002C0205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glasses-tvOS";
+			productName = "glasses-tvOS";
+			productReference = 52D6D9F01BEFFFBE002C0205 /* glasses.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		52D6DA0E1BF000BD002C0205 /* glasses-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D6DA201BF000BD002C0205 /* Build configuration list for PBXNativeTarget "glasses-macOS" */;
+			buildPhases = (
+				52D6DA0A1BF000BD002C0205 /* Sources */,
+				52D6DA0B1BF000BD002C0205 /* Frameworks */,
+				52D6DA0C1BF000BD002C0205 /* Headers */,
+				52D6DA0D1BF000BD002C0205 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "glasses-macOS";
+			productName = "glasses-macOS";
+			productReference = 52D6DA0F1BF000BD002C0205 /* glasses.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DD7502791C68FCFC006590AF /* glasses-macOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD7502821C68FCFC006590AF /* Build configuration list for PBXNativeTarget "glasses-macOS Tests" */;
+			buildPhases = (
+				DD7502761C68FCFC006590AF /* Sources */,
+				DD7502771C68FCFC006590AF /* Frameworks */,
+				DD7502781C68FCFC006590AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD7502811C68FCFC006590AF /* PBXTargetDependency */,
+			);
+			name = "glasses-macOS Tests";
+			productName = "glasses-OS Tests";
+			productReference = DD75027A1C68FCFC006590AF /* glasses-macOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DD75028C1C690C7A006590AF /* glasses-tvOS Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD7502951C690C7A006590AF /* Build configuration list for PBXNativeTarget "glasses-tvOS Tests" */;
+			buildPhases = (
+				DD7502891C690C7A006590AF /* Sources */,
+				DD75028A1C690C7A006590AF /* Frameworks */,
+				DD75028B1C690C7A006590AF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD7502941C690C7A006590AF /* PBXTargetDependency */,
+			);
+			name = "glasses-tvOS Tests";
+			productName = "glasses-tvOS Tests";
+			productReference = DD75028D1C690C7A006590AF /* glasses-tvOS Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52D6D9731BEFF229002C0205 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = glasses;
+				TargetAttributes = {
+					52D6D97B1BEFF229002C0205 = {
+						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 1020;
+					};
+					52D6D9851BEFF229002C0205 = {
+						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 1020;
+					};
+					52D6D9E11BEFFF6E002C0205 = {
+						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 1020;
+					};
+					52D6D9EF1BEFFFBE002C0205 = {
+						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 1020;
+					};
+					52D6DA0E1BF000BD002C0205 = {
+						CreatedOnToolsVersion = 7.1;
+						LastSwiftMigration = 1020;
+					};
+					DD7502791C68FCFC006590AF = {
+						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 1020;
+					};
+					DD75028C1C690C7A006590AF = {
+						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 1020;
+					};
+				};
+			};
+			buildConfigurationList = 52D6D9761BEFF229002C0205 /* Build configuration list for PBXProject "glasses" */;
+			compatibilityVersion = "Xcode 6.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52D6D9721BEFF229002C0205;
+			productRefGroup = 52D6D97D1BEFF229002C0205 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52D6D97B1BEFF229002C0205 /* glasses-iOS */,
+				52D6DA0E1BF000BD002C0205 /* glasses-macOS */,
+				52D6D9E11BEFFF6E002C0205 /* glasses-watchOS */,
+				52D6D9EF1BEFFFBE002C0205 /* glasses-tvOS */,
+				52D6D9851BEFF229002C0205 /* glasses-iOS Tests */,
+				DD7502791C68FCFC006590AF /* glasses-macOS Tests */,
+				DD75028C1C690C7A006590AF /* glasses-tvOS Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52D6D97A1BEFF229002C0205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9841BEFF229002C0205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9E01BEFFF6E002C0205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9EE1BEFFFBE002C0205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6DA0D1BF000BD002C0205 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD7502781C68FCFC006590AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD75028B1C690C7A006590AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52D6D9771BEFF229002C0205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACB2F5FE23CC8F6900C93822 /* MSetters.swift in Sources */,
+				ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */,
+				ACB2F64423CC9ACF00C93822 /* Iso+Composition.swift in Sources */,
+				ACB2F5F523CC8F5100C93822 /* Lens+Prism.swift in Sources */,
+				ACB2F5E123CC8F4100C93822 /* MLens+Composition.swift in Sources */,
+				ACB2F5E223CC8F4100C93822 /* MLens.swift in Sources */,
+				ACB2F5F423CC8F5100C93822 /* Prism+Setter.swift in Sources */,
+				ACB2F61523CC900300C93822 /* PrecedenceGroups.swift in Sources */,
+				ACB2F5E023CC8F4100C93822 /* MLens+Constructor.swift in Sources */,
+				ACB2F5ED23CC8F5100C93822 /* Prism+Array.swift in Sources */,
+				ACB2F64623CCB6BD00C93822 /* Traversal+Utils.swift in Sources */,
+				ACB2F60923CC8F7200C93822 /* Traversal+Getter.swift in Sources */,
+				ACB2F5EF23CC8F5100C93822 /* Prism+As.swift in Sources */,
+				ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */,
+				ACB2F61923CC906A00C93822 /* Iso.swift in Sources */,
+				ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */,
+				ACB2F5DC23CC8F3B00C93822 /* Lens+Setter.swift in Sources */,
+				ACB2F61723CC901700C93822 /* Application.swift in Sources */,
+				ACB2F60723CC8F7200C93822 /* Lens+Traversal.swift in Sources */,
+				ACB2F5FA23CC8F5B00C93822 /* Getter.swift in Sources */,
+				ACB2F5DA23CC8F3B00C93822 /* Lens+Tuple.swift in Sources */,
+				ACB2F61323CC900000C93822 /* Operators.swift in Sources */,
+				ACB2F60A23CC8F7200C93822 /* Traversal.swift in Sources */,
+				ACB2F5FC23CC8F5B00C93822 /* Setter.swift in Sources */,
+				ACB2F5F623CC8F5100C93822 /* Prism+Getter.swift in Sources */,
+				ACB2F5EE23CC8F5100C93822 /* Prism.swift in Sources */,
+				ACB2F60D23CC8F7300C93822 /* Traversal+Composition.swift in Sources */,
+				ACB2F5F023CC8F5100C93822 /* Prism+Optional.swift in Sources */,
+				ACB2F5DB23CC8F3B00C93822 /* Lens+Getter.swift in Sources */,
+				ACB2F5FB23CC8F5B00C93822 /* Optic.swift in Sources */,
+				ACB2F61023CC8FD000C93822 /* Prelude.swift in Sources */,
+				ACB2F61B23CC91E000C93822 /* Lens+Iso.swift in Sources */,
+				ACB2F60E23CC8F7300C93822 /* Prism+Traversal.swift in Sources */,
+				ACB2F60C23CC8F7200C93822 /* Traversal+Tuple.swift in Sources */,
+				ACB2F60B23CC8F7200C93822 /* Traversal+Array.swift in Sources */,
+				ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */,
+				ACB2F5F123CC8F5100C93822 /* Prism+Dictionary.swift in Sources */,
+				ACB2F60823CC8F7200C93822 /* Traversal+Setter.swift in Sources */,
+				ACB2F64223CC944800C93822 /* Iso+Numeric.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9821BEFF229002C0205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACB2F62523CC942000C93822 /* LensTests.swift in Sources */,
+				ACB2F62E23CC942B00C93822 /* IsoTests.swift in Sources */,
+				ACB2F62923CC942000C93822 /* TraversalCompositionTests.swift in Sources */,
+				ACB2F62623CC942000C93822 /* MLensTests.swift in Sources */,
+				ACB2F62423CC942000C93822 /* LensCompositionTests.swift in Sources */,
+				8933C7901EB5B82D000D00A4 /* glassesTests.swift in Sources */,
+				ACB2F62723CC942000C93822 /* OpticTests.swift in Sources */,
+				ACB2F62B23CC942000C93822 /* TraversalTests.swift in Sources */,
+				ACB2F62A23CC942000C93822 /* TraversalPrismTests.swift in Sources */,
+				ACB2F62823CC942000C93822 /* PrismTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9DD1BEFFF6E002C0205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6D9EB1BEFFFBE002C0205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D6DA0A1BF000BD002C0205 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD7502761C68FCFC006590AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACB2F63023CC943300C93822 /* LensCompositionTests.swift in Sources */,
+				ACB2F63E23CC943300C93822 /* IsoTests.swift in Sources */,
+				8933C78F1EB5B82C000D00A4 /* glassesTests.swift in Sources */,
+				ACB2F63823CC943300C93822 /* TraversalPrismTests.swift in Sources */,
+				ACB2F63423CC943300C93822 /* TraversalTests.swift in Sources */,
+				ACB2F63623CC943300C93822 /* PrismTests.swift in Sources */,
+				ACB2F63223CC943300C93822 /* TraversalCompositionTests.swift in Sources */,
+				ACB2F63C23CC943300C93822 /* LensTests.swift in Sources */,
+				ACB2F64023CC943300C93822 /* OpticTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD7502891C690C7A006590AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACB2F62F23CC943300C93822 /* LensCompositionTests.swift in Sources */,
+				ACB2F63D23CC943300C93822 /* IsoTests.swift in Sources */,
+				8933C78E1EB5B82C000D00A4 /* glassesTests.swift in Sources */,
+				ACB2F63723CC943300C93822 /* TraversalPrismTests.swift in Sources */,
+				ACB2F63323CC943300C93822 /* TraversalTests.swift in Sources */,
+				ACB2F63523CC943300C93822 /* PrismTests.swift in Sources */,
+				ACB2F63123CC943300C93822 /* TraversalCompositionTests.swift in Sources */,
+				ACB2F63B23CC943300C93822 /* LensTests.swift in Sources */,
+				ACB2F63F23CC943300C93822 /* OpticTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52D6D9891BEFF229002C0205 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D6D97B1BEFF229002C0205 /* glasses-iOS */;
+			targetProxy = 52D6D9881BEFF229002C0205 /* PBXContainerItemProxy */;
+		};
+		DD7502811C68FCFC006590AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D6DA0E1BF000BD002C0205 /* glasses-macOS */;
+			targetProxy = DD7502801C68FCFC006590AF /* PBXContainerItemProxy */;
+		};
+		DD7502941C690C7A006590AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D6D9EF1BEFFFBE002C0205 /* glasses-tvOS */;
+			targetProxy = DD7502931C690C7A006590AF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52D6D98E1BEFF229002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		52D6D98F1BEFF229002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		52D6D9911BEFF229002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-iOS";
+				PRODUCT_NAME = glasses;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52D6D9921BEFF229002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-iOS";
+				PRODUCT_NAME = glasses;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		52D6D9941BEFF229002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52D6D9951BEFF229002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		52D6D9E81BEFFF6E002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-watchOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		52D6D9E91BEFFF6E002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-watchOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		52D6DA021BEFFFBE002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-tvOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		52D6DA031BEFFFBE002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-tvOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		52D6DA211BF000BD002C0205 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-macOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		52D6DA221BF000BD002C0205 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Configs/glasses.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-macOS";
+				PRODUCT_NAME = glasses;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DD7502831C68FCFC006590AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		DD7502841C68FCFC006590AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-macOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		DD7502961C690C7A006590AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-tvOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Debug;
+		};
+		DD7502971C690C7A006590AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Configs/glassesTests.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.glasses.glasses-tvOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TVOS_DEPLOYMENT_TARGET = 9.1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52D6D9761BEFF229002C0205 /* Build configuration list for PBXProject "glasses" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6D98E1BEFF229002C0205 /* Debug */,
+				52D6D98F1BEFF229002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D6D9901BEFF229002C0205 /* Build configuration list for PBXNativeTarget "glasses-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6D9911BEFF229002C0205 /* Debug */,
+				52D6D9921BEFF229002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D6D9931BEFF229002C0205 /* Build configuration list for PBXNativeTarget "glasses-iOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6D9941BEFF229002C0205 /* Debug */,
+				52D6D9951BEFF229002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D6D9E71BEFFF6E002C0205 /* Build configuration list for PBXNativeTarget "glasses-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6D9E81BEFFF6E002C0205 /* Debug */,
+				52D6D9E91BEFFF6E002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D6DA011BEFFFBE002C0205 /* Build configuration list for PBXNativeTarget "glasses-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6DA021BEFFFBE002C0205 /* Debug */,
+				52D6DA031BEFFFBE002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D6DA201BF000BD002C0205 /* Build configuration list for PBXNativeTarget "glasses-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D6DA211BF000BD002C0205 /* Debug */,
+				52D6DA221BF000BD002C0205 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD7502821C68FCFC006590AF /* Build configuration list for PBXNativeTarget "glasses-macOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD7502831C68FCFC006590AF /* Debug */,
+				DD7502841C68FCFC006590AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD7502951C690C7A006590AF /* Build configuration list for PBXNativeTarget "glasses-tvOS Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD7502961C690C7A006590AF /* Debug */,
+				DD7502971C690C7A006590AF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52D6D9731BEFF229002C0205 /* Project object */;
+}
