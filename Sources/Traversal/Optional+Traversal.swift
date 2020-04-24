@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Optional {
-	func each<B>() -> Traversal<Wrapped?, Wrapped, B, B?> {
+	static func each<B>() -> Traversal<Wrapped?, Wrapped, B, B?> {
 		.init(
 			get: { s in
 				[s].compactMap { $0 }

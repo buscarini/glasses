@@ -8,6 +8,14 @@
 
 import Foundation
 
+public extension Fold {
+	func compose<B>(
+		_ right: Fold<A, B>
+	) -> Fold<S, B> {
+		glasses.compose(self, right)
+	}
+}
+
 public func compose<S, A, B>(
 	_ left: Fold<S, A>,
 	_ right: Fold<A, B>

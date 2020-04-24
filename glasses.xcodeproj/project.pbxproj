@@ -39,6 +39,12 @@
 		ACA2710424539C50005BAAF3 /* Fold+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710224539BFE005BAAF3 /* Fold+Composition.swift */; };
 		ACA2710724539CD0005BAAF3 /* Lens+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710524539CBB005BAAF3 /* Lens+Fold.swift */; };
 		ACA2710924539CEE005BAAF3 /* Prism+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710824539CEE005BAAF3 /* Prism+Fold.swift */; };
+		ACA2710B24539DAA005BAAF3 /* Fold+Monoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710A24539DAA005BAAF3 /* Fold+Monoid.swift */; };
+		ACA2710D24539F47005BAAF3 /* Traversal+Monoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710C24539F47005BAAF3 /* Traversal+Monoid.swift */; };
+		ACA2710F24539FBA005BAAF3 /* FoldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2710E24539FBA005BAAF3 /* FoldTests.swift */; };
+		ACA271112453A032005BAAF3 /* Fold+Concatenation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271102453A032005BAAF3 /* Fold+Concatenation.swift */; };
+		ACA271152453A1BD005BAAF3 /* Optional+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271142453A1BD005BAAF3 /* Optional+Fold.swift */; };
+		ACA271172453A211005BAAF3 /* Either+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271162453A211005BAAF3 /* Either+Fold.swift */; };
 		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
 		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
 		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
@@ -167,6 +173,12 @@
 		ACA2710224539BFE005BAAF3 /* Fold+Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Composition.swift"; sourceTree = "<group>"; };
 		ACA2710524539CBB005BAAF3 /* Lens+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lens+Fold.swift"; sourceTree = "<group>"; };
 		ACA2710824539CEE005BAAF3 /* Prism+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Fold.swift"; sourceTree = "<group>"; };
+		ACA2710A24539DAA005BAAF3 /* Fold+Monoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Monoid.swift"; sourceTree = "<group>"; };
+		ACA2710C24539F47005BAAF3 /* Traversal+Monoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Traversal+Monoid.swift"; sourceTree = "<group>"; };
+		ACA2710E24539FBA005BAAF3 /* FoldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTests.swift; sourceTree = "<group>"; };
+		ACA271102453A032005BAAF3 /* Fold+Concatenation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Concatenation.swift"; sourceTree = "<group>"; };
+		ACA271142453A1BD005BAAF3 /* Optional+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Fold.swift"; sourceTree = "<group>"; };
+		ACA271162453A211005BAAF3 /* Either+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Either+Fold.swift"; sourceTree = "<group>"; };
 		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
@@ -343,6 +355,7 @@
 				ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */,
 				ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */,
 				ACB2F61E23CC941900C93822 /* TraversalTests.swift */,
+				ACA2710E24539FBA005BAAF3 /* FoldTests.swift */,
 				8933C7891EB5B82A000D00A4 /* glassesTests.swift */,
 			);
 			name = Tests;
@@ -369,10 +382,14 @@
 			children = (
 				ACA270DE2453710C005BAAF3 /* Fold.swift */,
 				ACA2710224539BFE005BAAF3 /* Fold+Composition.swift */,
+				ACA271102453A032005BAAF3 /* Fold+Concatenation.swift */,
+				ACA2710A24539DAA005BAAF3 /* Fold+Monoid.swift */,
 				ACA270FF24539BB7005BAAF3 /* Func+Fold.swift */,
 				ACA2710524539CBB005BAAF3 /* Lens+Fold.swift */,
 				ACA2710824539CEE005BAAF3 /* Prism+Fold.swift */,
 				ACA270FB24539A5A005BAAF3 /* Traversal+Fold.swift */,
+				ACA271142453A1BD005BAAF3 /* Optional+Fold.swift */,
+				ACA271162453A211005BAAF3 /* Either+Fold.swift */,
 			);
 			path = Fold;
 			sourceTree = "<group>";
@@ -403,6 +420,7 @@
 				ACB2F60123CC8F7200C93822 /* Traversal+Getter.swift */,
 				ACB2F60023CC8F7200C93822 /* Traversal+Setter.swift */,
 				ACB2F60423CC8F7200C93822 /* Traversal+Tuple.swift */,
+				ACA2710C24539F47005BAAF3 /* Traversal+Monoid.swift */,
 				ACB2F5FF23CC8F7200C93822 /* Lens+Traversal.swift */,
 				ACB2F60623CC8F7200C93822 /* Prism+Traversal.swift */,
 				ACA270F524539870005BAAF3 /* Either+Traversal.swift */,
@@ -816,16 +834,19 @@
 				ACA270B0245331B4005BAAF3 /* Monoid.swift in Sources */,
 				ACB2F61523CC900300C93822 /* PrecedenceGroups.swift in Sources */,
 				ACB2F5E023CC8F4100C93822 /* MLens+Constructor.swift in Sources */,
+				ACA271152453A1BD005BAAF3 /* Optional+Fold.swift in Sources */,
 				ACB2F5ED23CC8F5100C93822 /* Prism+Array.swift in Sources */,
 				ACB2F64623CCB6BD00C93822 /* Traversal+Utils.swift in Sources */,
 				ACB2F60923CC8F7200C93822 /* Traversal+Getter.swift in Sources */,
 				ACA270EF24539824005BAAF3 /* Either+Zip.swift in Sources */,
 				ACB2F5EF23CC8F5100C93822 /* Prism+As.swift in Sources */,
 				ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */,
+				ACA271172453A211005BAAF3 /* Either+Fold.swift in Sources */,
 				ACB2F61923CC906A00C93822 /* Iso.swift in Sources */,
 				ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */,
 				ACB2F5DC23CC8F3B00C93822 /* Lens+Setter.swift in Sources */,
 				ACA2710424539C50005BAAF3 /* Fold+Composition.swift in Sources */,
+				ACA2710D24539F47005BAAF3 /* Traversal+Monoid.swift in Sources */,
 				ACB2F61723CC901700C93822 /* Application.swift in Sources */,
 				ACA270B1245331B4005BAAF3 /* Monoid+Boolean.swift in Sources */,
 				ACB2F60723CC8F7200C93822 /* Lens+Traversal.swift in Sources */,
@@ -836,6 +857,7 @@
 				ACA270F224539825005BAAF3 /* Either+Monad.swift in Sources */,
 				ACA2710924539CEE005BAAF3 /* Prism+Fold.swift in Sources */,
 				ACA270FA24539961005BAAF3 /* Optional+Traversal.swift in Sources */,
+				ACA271112453A032005BAAF3 /* Fold+Concatenation.swift in Sources */,
 				ACB2F60A23CC8F7200C93822 /* Traversal.swift in Sources */,
 				ACA270B3245331B4005BAAF3 /* Monoid+Numeric.swift in Sources */,
 				ACB2F5FC23CC8F5B00C93822 /* Setter.swift in Sources */,
@@ -845,6 +867,7 @@
 				ACB2F5F023CC8F5100C93822 /* Prism+Optional.swift in Sources */,
 				ACA270B4245331B4005BAAF3 /* Semigroup.swift in Sources */,
 				ACB2F5DB23CC8F3B00C93822 /* Lens+Getter.swift in Sources */,
+				ACA2710B24539DAA005BAAF3 /* Fold+Monoid.swift in Sources */,
 				ACB2F5FB23CC8F5B00C93822 /* Optic.swift in Sources */,
 				ACB2F61023CC8FD000C93822 /* Prelude.swift in Sources */,
 				ACA2710724539CD0005BAAF3 /* Lens+Fold.swift in Sources */,
@@ -871,6 +894,7 @@
 				ACB2F62523CC942000C93822 /* LensTests.swift in Sources */,
 				ACB2F62E23CC942B00C93822 /* IsoTests.swift in Sources */,
 				ACB2F62923CC942000C93822 /* TraversalCompositionTests.swift in Sources */,
+				ACA2710F24539FBA005BAAF3 /* FoldTests.swift in Sources */,
 				ACB2F62623CC942000C93822 /* MLensTests.swift in Sources */,
 				ACB2F62423CC942000C93822 /* LensCompositionTests.swift in Sources */,
 				8933C7901EB5B82D000D00A4 /* glassesTests.swift in Sources */,

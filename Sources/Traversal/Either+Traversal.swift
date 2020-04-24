@@ -9,7 +9,7 @@
 import Foundation
 
 public extension Either where A == B {
-	func each<C>() -> Traversal<Either<A, A>, A, C, Either<C, C>> {
+	static func each<C>() -> Traversal<Either<A, A>, A, C, Either<C, C>> {
 		.init(
 			get: { s in
 				s.fold(
