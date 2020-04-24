@@ -8,8 +8,8 @@
 import Foundation
 
 public func _map<A, B>() -> Traversal<[A], A, B, [B]> {
-	return Traversal(get: { (s: [A]) in
-		return s
+	Traversal(get: { (s: [A]) in
+		s
 	}, update: { (f: @escaping ((A) -> B)) -> ([A]) -> [B] in
 		{ s in
 			return s.map(f)
@@ -18,8 +18,8 @@ public func _map<A, B>() -> Traversal<[A], A, B, [B]> {
 }
 
 public func _where<A>(_ f: @escaping (A) -> Bool) -> Traversal<[A], A, A, [A]> {
-	return Traversal(get: { (s: [A]) in
-		return s.filter(f)
+	Traversal(get: { (s: [A]) in
+		s.filter(f)
 	}, update: { g in
 		{ s in
 			return s.map {
@@ -30,11 +30,11 @@ public func _where<A>(_ f: @escaping (A) -> Bool) -> Traversal<[A], A, A, [A]> {
 }
 
 public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -> Traversal<[A], A, A, [A]> {
-	return Traversal(get: { (s: [A]) -> [A] in
-		return s.filter { $0[keyPath: keyPath] == value }
+	Traversal(get: { (s: [A]) -> [A] in
+		s.filter { $0[keyPath: keyPath] == value }
 	}, update: { (f: @escaping ((A) -> A)) -> ([A]) -> [A] in
 		{ s in
-			return s.map { item in
+			s.map { item in
 				guard item[keyPath: keyPath] == value else {
 					return item
 				}
@@ -44,4 +44,15 @@ public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -
 		}
 	})
 }
-
+//
+//public func taking<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> { {
+//	Traversal<[A], A, A, [A]>(
+//		get: { s in
+//
+//		})
+//		{ update in
+//			{ s in
+//
+//			}
+//		}
+//}

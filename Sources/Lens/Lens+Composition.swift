@@ -7,6 +7,13 @@
 
 import Foundation
 
+public extension Lens {
+	func compose<C, D>(
+		_ right: Lens<A, C, D, B>
+	) -> Lens<S, C, D, T> {
+		glasses.compose(self, right)
+	}
+}
 
 public func compose<S, A, B, T, C, D>(
 	_ left: Lens<S, A, B, T>,
