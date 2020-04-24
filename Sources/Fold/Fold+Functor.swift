@@ -1,5 +1,5 @@
 //
-//  Fold+Monoid.swift
+//  Fold+Functor.swift
 //  glasses-iOS
 //
 //  Created by José Manuel Sánchez Peñarroja on 25/04/2020.
@@ -9,10 +9,11 @@
 import Foundation
 
 public extension Fold {
-	func reduced(
-		_ m: Monoid<A>,
-		_ s: S
-	) -> A {
-		self._get(s).reduced(m)
+	func map<B>(
+		_ f: @escaping (A) -> B
+	) -> Fold<S, B> {
+		.init(get: { s in
+			self._get(s).map(f)
+		})
 	}
 }

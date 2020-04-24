@@ -13,22 +13,24 @@ public extension Array {
 		self.reduce(nil, m.combine)
 	}
 	
-	func reduced(_ initial: Element, _ s: Semigroup<Element>) -> Element {
-		self.reduce(initial, s.combine)
-	}
-	
 	func reduced(_ m: Monoid<Element>) -> Element {
-		return self.reduce(m.empty, m.semigroup.combine)
+		self.reduce(m.empty, m.semigroup.combine)
 	}
 	
-	func reduced<T>(_ f: @escaping (Element) -> T, _ m: Monoid<T>) -> T {
-		return self.reduce(m.empty) {
-			return m.semigroup.combine($0, f($1))
+	func reduced<T>(
+		_ f: @escaping (Element) -> T,
+		_ m: Monoid<T>
+	) -> T {
+		self.reduce(m.empty) {
+			m.semigroup.combine($0, f($1))
 		}
 	}
 	
-	func foldMap<M>(_ m: Monoid<M>, _ f: @escaping (Element) -> M) -> M {
-		return self.reduce(m.empty, { acc, item in
+	func foldMap<M>(
+		_ m: Monoid<M>,
+		_ f: @escaping (Element) -> M
+	) -> M {
+		self.reduce(m.empty, { acc, item in
 			m.combine(acc, f(item))
 		})
 	}

@@ -46,6 +46,12 @@
 		ACA271152453A1BD005BAAF3 /* Optional+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271142453A1BD005BAAF3 /* Optional+Fold.swift */; };
 		ACA271172453A211005BAAF3 /* Either+Fold.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271162453A211005BAAF3 /* Either+Fold.swift */; };
 		ACA271192453A318005BAAF3 /* Fold+KeyPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271182453A318005BAAF3 /* Fold+KeyPath.swift */; };
+		ACA2711B2453A427005BAAF3 /* Fold+Functor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2711A2453A427005BAAF3 /* Fold+Functor.swift */; };
+		ACA2711D2453A5D4005BAAF3 /* Fold+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2711C2453A5D4005BAAF3 /* Fold+Filter.swift */; };
+		ACA2711F2453A68C005BAAF3 /* Fold+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2711E2453A68C005BAAF3 /* Fold+Utils.swift */; };
+		ACA271212453A7CA005BAAF3 /* Semigroup+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271202453A7CA005BAAF3 /* Semigroup+Comparable.swift */; };
+		ACA271232453A839005BAAF3 /* Fold+Semigroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */; };
+		ACA271252453A86D005BAAF3 /* Array+Semigroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271242453A86D005BAAF3 /* Array+Semigroup.swift */; };
 		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
 		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
 		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
@@ -181,6 +187,12 @@
 		ACA271142453A1BD005BAAF3 /* Optional+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Fold.swift"; sourceTree = "<group>"; };
 		ACA271162453A211005BAAF3 /* Either+Fold.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Either+Fold.swift"; sourceTree = "<group>"; };
 		ACA271182453A318005BAAF3 /* Fold+KeyPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+KeyPath.swift"; sourceTree = "<group>"; };
+		ACA2711A2453A427005BAAF3 /* Fold+Functor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Functor.swift"; sourceTree = "<group>"; };
+		ACA2711C2453A5D4005BAAF3 /* Fold+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Filter.swift"; sourceTree = "<group>"; };
+		ACA2711E2453A68C005BAAF3 /* Fold+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Utils.swift"; sourceTree = "<group>"; };
+		ACA271202453A7CA005BAAF3 /* Semigroup+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Semigroup+Comparable.swift"; sourceTree = "<group>"; };
+		ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Semigroup.swift"; sourceTree = "<group>"; };
+		ACA271242453A86D005BAAF3 /* Array+Semigroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Semigroup.swift"; sourceTree = "<group>"; };
 		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
@@ -369,11 +381,13 @@
 			children = (
 				ACA270AA24533171005BAAF3 /* Semigroup.swift */,
 				ACA270AD24533171005BAAF3 /* Semigroup+Position.swift */,
+				ACA271202453A7CA005BAAF3 /* Semigroup+Comparable.swift */,
 				ACA270AE24533172005BAAF3 /* Monoid.swift */,
 				ACA270B6245335A3005BAAF3 /* Monoid+Array.swift */,
 				ACA270A924533171005BAAF3 /* Monoid+Boolean.swift */,
 				ACA270AC24533171005BAAF3 /* Monoid+Func.swift */,
 				ACA270AB24533171005BAAF3 /* Monoid+Numeric.swift */,
+				ACA271242453A86D005BAAF3 /* Array+Semigroup.swift */,
 				ACA270A824533171005BAAF3 /* Array+Monoid.swift */,
 			);
 			path = Algebra;
@@ -383,9 +397,13 @@
 			isa = PBXGroup;
 			children = (
 				ACA270DE2453710C005BAAF3 /* Fold.swift */,
+				ACA2711A2453A427005BAAF3 /* Fold+Functor.swift */,
+				ACA2711C2453A5D4005BAAF3 /* Fold+Filter.swift */,
 				ACA2710224539BFE005BAAF3 /* Fold+Composition.swift */,
 				ACA271102453A032005BAAF3 /* Fold+Concatenation.swift */,
+				ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */,
 				ACA2710A24539DAA005BAAF3 /* Fold+Monoid.swift */,
+				ACA2711E2453A68C005BAAF3 /* Fold+Utils.swift */,
 				ACA271182453A318005BAAF3 /* Fold+KeyPath.swift */,
 				ACA270FF24539BB7005BAAF3 /* Func+Fold.swift */,
 				ACA2710524539CBB005BAAF3 /* Lens+Fold.swift */,
@@ -822,6 +840,7 @@
 				ACA270FE24539AA4005BAAF3 /* Fold.swift in Sources */,
 				ACA270B2245331B4005BAAF3 /* Monoid+Func.swift in Sources */,
 				ACA270F72453987B005BAAF3 /* Either+Traversal.swift in Sources */,
+				ACA271252453A86D005BAAF3 /* Array+Semigroup.swift in Sources */,
 				ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */,
 				ACB2F64423CC9ACF00C93822 /* Iso+Composition.swift in Sources */,
 				ACA270ED24539824005BAAF3 /* Either+Error.swift in Sources */,
@@ -833,7 +852,9 @@
 				ACA271192453A318005BAAF3 /* Fold+KeyPath.swift in Sources */,
 				ACB2F5F423CC8F5100C93822 /* Prism+Setter.swift in Sources */,
 				ACA270F124539824005BAAF3 /* Either+Codable.swift in Sources */,
+				ACA271232453A839005BAAF3 /* Fold+Semigroup.swift in Sources */,
 				ACA270F024539824005BAAF3 /* Either+Applicative.swift in Sources */,
+				ACA271212453A7CA005BAAF3 /* Semigroup+Comparable.swift in Sources */,
 				ACA270B7245335A3005BAAF3 /* Monoid+Array.swift in Sources */,
 				ACA270B0245331B4005BAAF3 /* Monoid.swift in Sources */,
 				ACB2F61523CC900300C93822 /* PrecedenceGroups.swift in Sources */,
@@ -872,6 +893,7 @@
 				ACA270B4245331B4005BAAF3 /* Semigroup.swift in Sources */,
 				ACB2F5DB23CC8F3B00C93822 /* Lens+Getter.swift in Sources */,
 				ACA2710B24539DAA005BAAF3 /* Fold+Monoid.swift in Sources */,
+				ACA2711F2453A68C005BAAF3 /* Fold+Utils.swift in Sources */,
 				ACB2F5FB23CC8F5B00C93822 /* Optic.swift in Sources */,
 				ACB2F61023CC8FD000C93822 /* Prelude.swift in Sources */,
 				ACA2710724539CD0005BAAF3 /* Lens+Fold.swift in Sources */,
@@ -879,9 +901,11 @@
 				ACB2F60E23CC8F7300C93822 /* Prism+Traversal.swift in Sources */,
 				ACA270EE24539824005BAAF3 /* Either+Traversable.swift in Sources */,
 				ACA270EA24539824005BAAF3 /* Either.swift in Sources */,
+				ACA2711B2453A427005BAAF3 /* Fold+Functor.swift in Sources */,
 				ACB2F60C23CC8F7200C93822 /* Traversal+Tuple.swift in Sources */,
 				ACA270B5245331B4005BAAF3 /* Semigroup+Position.swift in Sources */,
 				ACB2F60B23CC8F7200C93822 /* Traversal+Array.swift in Sources */,
+				ACA2711D2453A5D4005BAAF3 /* Fold+Filter.swift in Sources */,
 				ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */,
 				ACB2F5F123CC8F5100C93822 /* Prism+Dictionary.swift in Sources */,
 				ACA270EB24539824005BAAF3 /* Either+Optional.swift in Sources */,

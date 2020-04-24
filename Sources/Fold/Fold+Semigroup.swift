@@ -1,5 +1,5 @@
 //
-//  Fold+Monoid.swift
+//  Fold+Semigroup.swift
 //  glasses-iOS
 //
 //  Created by José Manuel Sánchez Peñarroja on 25/04/2020.
@@ -10,9 +10,9 @@ import Foundation
 
 public extension Fold {
 	func reduced(
-		_ m: Monoid<A>,
+		_ sem: Semigroup<A>,
 		_ s: S
-	) -> A {
-		self._get(s).reduced(m)
+	) -> A? {
+		self._get(s).reduced(sem)
 	}
 }
