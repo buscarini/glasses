@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "EF61E67B-2C97-4654-8C5A-674B3F829E80",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:glasses.xcodeproj",
+      "identifier" : "52D6D97B1BEFF229002C0205",
+      "name" : "glasses-iOS"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:glasses.xcodeproj",
+        "identifier" : "52D6D9851BEFF229002C0205",
+        "name" : "glasses-iOS Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -44,15 +44,33 @@ public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -
 		}
 	})
 }
-//
-//public func taking<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> { {
-//	Traversal<[A], A, A, [A]>(
-//		get: { s in
-//
-//		})
-//		{ update in
-//			{ s in
-//
-//			}
-//		}
-//}
+
+public func prefix<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> {
+	.init(
+		get: { aa in
+			Array(aa.prefix(prefix))
+		},
+		update: { f in
+			{ aa in
+				let first = aa.prefix(prefix)
+				let rest = aa.dropFirst(prefix)
+				return Array(first.map(f) + rest)
+			}
+		}
+	)
+}
+
+public func suffix<A>(_ suffix: Int) -> Traversal<[A], A, A, [A]> {
+	.init(
+		get: { aa in
+			Array(aa.suffix(suffix))
+		},
+		update: { f in
+			{ aa in
+				let first = aa.dropLast(suffix)
+				let rest = aa.suffix(suffix)
+				return Array(first + rest.map(f))
+			}
+		}
+	)
+}

@@ -7,51 +7,51 @@
 
 import Foundation
 
-
 public struct Traversal<S, A, B, T> {
-    let _get: (S) -> [A]
-    let _update: (@escaping (A) -> B) -> (S) -> T
-
-    public init(get: @escaping (S) -> [A], update: @escaping (@escaping (A) -> B) -> (S) -> T) {
-        self._get = get
-        self._update = update
-    }
+	let _get: (S) -> [A]
+	let _update: (@escaping (A) -> B) -> (S) -> T
+	
+	public init(get: @escaping (S) -> [A], update: @escaping (@escaping (A) -> B) -> (S) -> T) {
+		self._get = get
+		self._update = update
+	}
 }
 
 public typealias SimpleTraversal<S, A> = Traversal<S, A, A, S>
 
-
+@inlinable
 public func get<S, A>(_ t: Traversal<S, A, A, S>, _ s: S) -> [A] {
-    return t._get(s)
+	get(t)(s)
 }
 
 public func get<S, A>(_ t: Traversal<S, A, A, S>) -> (_ s: S) -> [A] {
-    return { s in
-    	t._get(s)
+	{ s in
+		t._get(s)
 	}
 }
 
+@inlinable
 public func update<S, A, B, T>(_ t: Traversal<S, A, B, T>, _ f: @escaping (A) -> B, _ s: S) -> T {
-    return t._update(f)(s)
+	update(t, f)(s)
 }
 
 public func update<S, A, B, T>(_ t: Traversal<S, A, B, T>, _ f: @escaping (A) -> B) -> (_ s: S) -> T {
-    return { t._update(f)($0) }
+	{ t._update(f)($0) }
 }
 
 public func set<S, A, B, T>(_ t: Traversal<S, A, B, T>, _ b: B, _ s: S) -> T {
-    return t._update(const(b))(s)
+	t._update(const(b))(s)
 }
 
 public func set<S, A, B, T>(_ t: Traversal<S, A, B, T>, _ b: B) -> (_ s: S) -> T {
-    return { $0
-	 	|> t._update(const(b))
+	{ $0
+		|> t._update(const(b))
 	}
 }
 
 public func set<S, A, B, T>(_ t: Traversal<S, A, B, T>) -> (_ b: B) -> (_ s: S) -> T {
-	return { b in
-		return { $0
+	{ b in
+		{ $0
 			|> t._update(const(b))
 		}
 	}

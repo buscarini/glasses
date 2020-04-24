@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public func compose<S, A, B, T, C, D>(_ left: Traversal<S, A, B, T>, _ right: Traversal<A, C, D, B>) -> Traversal<S, C, D, T> {
 	return Traversal(get: { s in
 		return left._get(s).flatMap { a in

@@ -14,7 +14,7 @@ public protocol Getter {
 }
 
 public func view<G: Getter>(_ g: G) -> (G.Root) -> G.Value {
-	return { s in
-		return g.get(s)
+	{ s in
+		g.get(s)
 	}
 }
