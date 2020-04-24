@@ -17,3 +17,10 @@ public extension Fold {
 		})
 	}
 }
+
+public func <> <S, A> (
+	_ left: Fold<S, A>,
+	_ right: Fold<S, A>
+) -> Fold<S, A> {
+	left.concat(right)
+}

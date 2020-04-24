@@ -33,4 +33,19 @@ class FoldTests: XCTestCase {
 		
 		XCTAssertEqual(empty.count, 0)
 	}
+	
+	func testConcat() {
+		let f = fold(\Person.id) <> fold(\Person.name) <> fold(\Person.fields)
+		
+		let john = Person.init(id: "1", name: "John", fields: [ "random", "value", "admin" ])
+			
+		let all = john |> get(f)
+		
+		XCTAssertEqual(all.count, 5)
+		XCTAssertEqual(all[0], "1")
+		XCTAssertEqual(all[1], "John")
+		XCTAssertEqual(all[2], "random")
+		XCTAssertEqual(all[3], "value")
+		XCTAssertEqual(all[4], "admin")
+	}
 }
