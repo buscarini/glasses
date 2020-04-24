@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 extension Lens: Setter {
 	public typealias SetterRoot = S
 	public typealias SetterValue = B
@@ -18,4 +17,3 @@ extension Lens: Setter {
     	return s |> f
 	}
 }
-

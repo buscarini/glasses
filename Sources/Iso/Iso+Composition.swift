@@ -8,6 +8,14 @@
 
 import Foundation
 
+public extension Iso {
+	func compose<B>(
+		_ right: Iso<A, B>
+	) -> Iso<S, B> {
+		glasses.compose(self, right)
+	}
+}
+
 public func compose<S, A, B>(
 	_ left: Iso<S, A>,
 	_ right: Iso<A, B>
