@@ -7,6 +7,20 @@
 
 import Foundation
 
+public extension Prism {
+	func traversal() -> Traversal<S, A, B, T> {
+		.init(
+			get: { s in
+				[self.get(s)].compactMap { $0 }
+			},
+			update: { f in
+				{ s in
+					self._update(f)(s)
+				}
+			}
+		)
+	}
+}
 
 public func <<< <S, A, B, T> (_ left: (Prism<S, A, B, T>) -> Traversal<[S], A, B, [T]>, _ right: Prism<S, A, B, T>) -> Traversal<[S], A, B, [T]> {
 	return left(right)

@@ -7,6 +7,21 @@
 
 import Foundation
 
+public extension Lens {
+	func traversal() -> Traversal<S, A, B, T> {
+		.init(
+			get: { s in
+				[self.get(s)]
+			},
+			update: { f in
+				{ s in
+					self._update(f)(s)
+				}
+			}
+		)
+	}
+}
+
 
 public func <<< <S, A, B, T> (_ left: (Lens<S, A, B, T>) -> Traversal<[S], A, B, [T]>, _ right: Lens<S, A, B, T>) -> Traversal<[S], A, B, [T]> {
 	return left(right)
