@@ -23,12 +23,12 @@ public struct Prism<S, A, B, T> {
 
 public typealias SimplePrism<S, A> = Prism<S, A, A, S>
 
-public func get<S, A, B, T>(_ prism: Prism<S, A, B, T>, _ s: S) -> A? {
-	return prism._extract(s)
+public func extract<S, A, B, T>(_ prism: Prism<S, A, B, T>, _ s: S) -> A? {
+	prism._extract(s)
 }
 
-public func get<S, A, B, T>(_ prism: Prism<S, A, B, T>) -> (_ s: S) -> A? {
-	return { s in
+public func extract<S, A, B, T>(_ prism: Prism<S, A, B, T>) -> (_ s: S) -> A? {
+	{ s in
 		prism._extract(s)
 	}
 }
@@ -68,8 +68,4 @@ public func embed<S, A, B, T>(
 		prism._embed(b)
 	}
 }
-
-
-
-
 

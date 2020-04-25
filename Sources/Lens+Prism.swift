@@ -53,7 +53,7 @@ public func compose<S, A, B, T, C, D>(
 	Traversal1.init(
 		get: { s in
 			let a = left.get(s)
-			return get(right, a)
+			return extract(right, a)
 		},
 		update: { f in
 			{ s in

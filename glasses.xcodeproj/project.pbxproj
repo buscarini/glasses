@@ -61,6 +61,11 @@
 		ACA271342454C094005BAAF3 /* Prism+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271332454C094005BAAF3 /* Prism+Operator.swift */; };
 		ACA271362454C23A005BAAF3 /* Prism+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271352454C23A005BAAF3 /* Prism+Creation.swift */; };
 		ACA271382454C660005BAAF3 /* Either+Prism.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271372454C660005BAAF3 /* Either+Prism.swift */; };
+		ACA2713A2454D886005BAAF3 /* Result+Prism.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271392454D886005BAAF3 /* Result+Prism.swift */; };
+		ACA2713C2454D962005BAAF3 /* Traversal1+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2713B2454D962005BAAF3 /* Traversal1+Composition.swift */; };
+		ACA2713E2454DAFE005BAAF3 /* Traversal1+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2713D2454DAFE005BAAF3 /* Traversal1+Methods.swift */; };
+		ACA271402454F471005BAAF3 /* Prism+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2713F2454F471005BAAF3 /* Prism+Methods.swift */; };
+		ACA271432454F735005BAAF3 /* Traversal1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271412454F731005BAAF3 /* Traversal1Tests.swift */; };
 		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
 		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
 		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
@@ -211,6 +216,11 @@
 		ACA271332454C094005BAAF3 /* Prism+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Operator.swift"; sourceTree = "<group>"; };
 		ACA271352454C23A005BAAF3 /* Prism+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Creation.swift"; sourceTree = "<group>"; };
 		ACA271372454C660005BAAF3 /* Either+Prism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Either+Prism.swift"; sourceTree = "<group>"; };
+		ACA271392454D886005BAAF3 /* Result+Prism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Prism.swift"; sourceTree = "<group>"; };
+		ACA2713B2454D962005BAAF3 /* Traversal1+Composition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Traversal1+Composition.swift"; sourceTree = "<group>"; };
+		ACA2713D2454DAFE005BAAF3 /* Traversal1+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Traversal1+Methods.swift"; sourceTree = "<group>"; };
+		ACA2713F2454F471005BAAF3 /* Prism+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Methods.swift"; sourceTree = "<group>"; };
+		ACA271412454F731005BAAF3 /* Traversal1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversal1Tests.swift; sourceTree = "<group>"; };
 		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
@@ -386,6 +396,7 @@
 				ACB2F61C23CC941900C93822 /* MLensTests.swift */,
 				ACB2F62023CC941900C93822 /* OpticTests.swift */,
 				ACB2F62223CC941A00C93822 /* PrismTests.swift */,
+				ACA271412454F731005BAAF3 /* Traversal1Tests.swift */,
 				ACB2F61F23CC941900C93822 /* TraversalCompositionTests.swift */,
 				ACB2F62123CC941900C93822 /* TraversalPrismTests.swift */,
 				ACB2F61E23CC941900C93822 /* TraversalTests.swift */,
@@ -457,9 +468,11 @@
 			isa = PBXGroup;
 			children = (
 				ACA2712D24549F03005BAAF3 /* Traversal1.swift */,
+				ACA2713D2454DAFE005BAAF3 /* Traversal1+Methods.swift */,
 				ACB2F5E523CC8F5000C93822 /* Traversal1+As.swift */,
 				ACB2F5E323CC8F5000C93822 /* Traversal1+Array.swift */,
 				ACB2F5E723CC8F5000C93822 /* Traversal1+Dictionary.swift */,
+				ACA2713B2454D962005BAAF3 /* Traversal1+Composition.swift */,
 				ACA2712F2454B8A7005BAAF3 /* Lens+Traversal1.swift */,
 				ACB2F60623CC8F7200C93822 /* Prism+Traversal.swift */,
 			);
@@ -530,6 +543,7 @@
 			isa = PBXGroup;
 			children = (
 				ACB2F5E423CC8F5000C93822 /* Prism.swift */,
+				ACA2713F2454F471005BAAF3 /* Prism+Methods.swift */,
 				ACA271352454C23A005BAAF3 /* Prism+Creation.swift */,
 				ACA2712A245461DC005BAAF3 /* Prism+Enum.swift */,
 				ACA271332454C094005BAAF3 /* Prism+Operator.swift */,
@@ -538,6 +552,7 @@
 				ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */,
 				ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */,
 				ACA271372454C660005BAAF3 /* Either+Prism.swift */,
+				ACA271392454D886005BAAF3 /* Result+Prism.swift */,
 			);
 			path = Prism;
 			sourceTree = "<group>";
@@ -873,13 +888,16 @@
 				ACA270EC24539824005BAAF3 /* Either+Alt.swift in Sources */,
 				ACB2F5FE23CC8F6900C93822 /* MSetters.swift in Sources */,
 				ACA270FE24539AA4005BAAF3 /* Fold.swift in Sources */,
+				ACA2713E2454DAFE005BAAF3 /* Traversal1+Methods.swift in Sources */,
 				ACA270B2245331B4005BAAF3 /* Monoid+Func.swift in Sources */,
 				ACA270F72453987B005BAAF3 /* Either+Traversal.swift in Sources */,
 				ACA271252453A86D005BAAF3 /* Array+Semigroup.swift in Sources */,
+				ACA2713C2454D962005BAAF3 /* Traversal1+Composition.swift in Sources */,
 				ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */,
 				ACB2F64423CC9ACF00C93822 /* Iso+Composition.swift in Sources */,
 				ACA270ED24539824005BAAF3 /* Either+Error.swift in Sources */,
 				ACB2F5F523CC8F5100C93822 /* Lens+Prism.swift in Sources */,
+				ACA2713A2454D886005BAAF3 /* Result+Prism.swift in Sources */,
 				ACA271362454C23A005BAAF3 /* Prism+Creation.swift in Sources */,
 				ACB2F5E123CC8F4100C93822 /* MLens+Composition.swift in Sources */,
 				ACA270AF245331B4005BAAF3 /* Array+Monoid.swift in Sources */,
@@ -931,6 +949,7 @@
 				ACB2F60D23CC8F7300C93822 /* Traversal+Composition.swift in Sources */,
 				ACB2F5F023CC8F5100C93822 /* Prism+Optional.swift in Sources */,
 				ACA270B4245331B4005BAAF3 /* Semigroup.swift in Sources */,
+				ACA271402454F471005BAAF3 /* Prism+Methods.swift in Sources */,
 				ACB2F5DB23CC8F3B00C93822 /* Lens+Getter.swift in Sources */,
 				ACA2710B24539DAA005BAAF3 /* Fold+Monoid.swift in Sources */,
 				ACA2711F2453A68C005BAAF3 /* Fold+Utils.swift in Sources */,
@@ -962,6 +981,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACA271432454F735005BAAF3 /* Traversal1Tests.swift in Sources */,
 				ACA270DA245363CE005BAAF3 /* SemigroupTests.swift in Sources */,
 				ACB2F62523CC942000C93822 /* LensTests.swift in Sources */,
 				ACB2F62E23CC942B00C93822 /* IsoTests.swift in Sources */,

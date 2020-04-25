@@ -10,8 +10,4 @@ import Foundation
 extension Prism: Getter {
 	public typealias Root = S
 	public typealias Value = A?
-	
-	public func get(_ s: S) -> A? {
-		self._extract(s)
-	}
 }

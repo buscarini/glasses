@@ -8,7 +8,7 @@
 import Foundation
 
 public extension Dictionary {
-	func _value<K: Hashable, A>(
+	static func _value<K: Hashable, A>(
 		key: K
 	) -> SimpleTraversal1<[K: A], A> {
 		.init(get: { s in

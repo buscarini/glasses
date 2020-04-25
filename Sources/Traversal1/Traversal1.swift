@@ -60,3 +60,20 @@ public func set<S, A, B, T>(
 ) -> (_ s: S) -> T? {
 	t._update(const(b))
 }
+
+public func set_<S, A>(
+	_ t: SimpleTraversal1<S, A>,
+	_ a: A,
+	_ s: S
+) -> S {
+	t._update(const(a))(s) ?? s
+}
+
+public func set_<S, A>(
+	_ t: SimpleTraversal1<S, A>,
+	_ a: A
+) -> (_ s: S) -> S {
+	{ s in
+		set_(t, a, s)
+	}
+}

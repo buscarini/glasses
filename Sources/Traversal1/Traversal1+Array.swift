@@ -25,7 +25,7 @@ public extension Array {
 		)
 	}
 	
-	func _index(_ index: Int) -> Traversal1<[Element], Element, Element, [Element]> {
+	static func _index(_ index: Int) -> Traversal1<[Element], Element, Element, [Element]> {
 		.init(
 			get: { s in
 				guard s.count > index else { return nil }
@@ -58,7 +58,7 @@ public extension Array {
 		)
 	}
 
-	func _first<A>(
+	static func _first<A>(
 		where pred: @escaping (A) -> Bool
 	) -> Traversal1<[A], A, A, [A]> {
 		.init(
@@ -81,7 +81,7 @@ public extension Array {
 		)
 	}
 	
-	func _first<A, P: Equatable>(
+	static func _first<A, P: Equatable>(
 		where keyPath: KeyPath<A, P>,
 		equals value: P
 	) -> Traversal1<[A], A, A, [A]> {
@@ -90,7 +90,7 @@ public extension Array {
 		})
 	}
 	
-	func _last<A>(
+	static func _last<A>(
 		where pred: @escaping (A) -> Bool
 	) -> Traversal1<[A], A, A, [A]> {
 		.init(
@@ -113,7 +113,7 @@ public extension Array {
 		)
 	}
 
-	func _last<A, P: Equatable>(
+	static func _last<A, P: Equatable>(
 		where keyPath: KeyPath<A, P>,
 		equals value: P
 	) -> Traversal1<[A], A, A, [A]> {
