@@ -12,6 +12,6 @@ extension Prism: Getter {
 	public typealias Value = A?
 	
 	public func get(_ s: S) -> A? {
-		return self._get(s)
+		self._extract(s)
 	}
 }

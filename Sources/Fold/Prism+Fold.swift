@@ -11,7 +11,10 @@ import Foundation
 public extension Prism {
 	func fold() -> Fold<S, A> {
 		.init(get: { s in
-			[self._get(s)].compactMap { $0 }
+			[
+				self._extract(s)
+			]
+			.compactMap { $0 }
 		})
 	}
 }

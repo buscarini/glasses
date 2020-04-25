@@ -7,6 +7,23 @@
 
 import Foundation
 
+public extension Traversal where S == T {
+	func prefix<R>(
+		_ prefix: Int
+	) -> Traversal where S == [R] {
+		.init(get: { s in
+			Array(self._get(s).prefix(prefix))
+		}, update: { f in
+			{ rr in
+				let first = Array(rr.prefix(prefix))				
+				let rest = rr.dropFirst(prefix)
+				let firstMapped = self._update(f)(Array(first))
+				return Array(firstMapped + rest)
+			}
+		})
+	}
+}
+
 public func _map<A, B>() -> Traversal<[A], A, B, [B]> {
 	Traversal(get: { (s: [A]) in
 		s
@@ -43,6 +60,23 @@ public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -
 			}
 		}
 	})
+}
+
+public func taking<A>(
+	_ prefix: Int
+) -> (Traversal<[A], A, A, [A]>) -> Traversal<[A], A, A, [A]> {
+	{ t in
+		.init(get: { s in
+			Array(t._get(s).prefix(prefix))
+		}, update: { f in
+			{ aa in
+				let first = aa.prefix(prefix)
+				let rest = aa.dropFirst(prefix)
+				let firstMapped = t._update(f)(Array(first))
+				return Array(firstMapped + rest)
+			}
+		})
+	}
 }
 
 public func prefix<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> {

@@ -8,76 +8,70 @@
 import Foundation
 
 public struct Lens<S, A, B, T> {
-    let _get: (S) -> A
-    let _update: (@escaping (A) -> B) -> (S) -> T
-
-    public init(get: @escaping (S) -> A, update: @escaping (@escaping (A) -> B) -> (S) -> T) {
-        self._get = get
-        self._update = update
-    }
+	let _get: (S) -> A
+	let _update: (@escaping (A) -> B) -> (S) -> T
+	
+	public init(get: @escaping (S) -> A, update: @escaping (@escaping (A) -> B) -> (S) -> T) {
+		self._get = get
+		self._update = update
+	}
 }
 
 public typealias SimpleLens<S, A> = Lens<S, A, A, S>
 
 public func get<S, A>(_ lens: Lens<S, A, A, S>, _ s: S) -> A {
-    return lens._get(s)
+	lens._get(s)
 }
 
 public func get<S, A>(_ lens: Lens<S, A, A, S>) -> (_ s: S) -> A {
-    return { s in
-    	lens._get(s)
-	}
+	lens._get
 }
 
 public func get<S, A>(_ path: KeyPath<S, A>) -> (_ s: S) -> A {
-    return { s in
-    	s[keyPath: path]
+	{ s in
+		s[keyPath: path]
 	}
 }
 
 public func update<S, A, B, T>(_ lens: Lens<S, A, B, T>, _ f: @escaping (A) -> B, _ s: S) -> T {
-    return lens._update(f)(s)
+	lens._update(f)(s)
 }
 
 public func update<S, A, B, T>(_ lens: Lens<S, A, B, T>, _ f: @escaping (A) -> B) -> (_ s: S) -> T {
-    return { lens._update(f)($0) }
+	lens._update(f)
 }
 
 public func update<S, A>(_ path: WritableKeyPath<S, A>, _ f: @escaping (A) -> A) -> (_ s: S) -> S {
-    return {
-    	var result = $0
+	{
+		var result = $0
 		result[keyPath: path] = f(result[keyPath: path])
-    	return result
+		return result
 	}
 }
 
 public func set<S, A, B, T>(_ lens: Lens<S, A, B, T>, _ b: B, _ s: S) -> T {
-    return lens._update(const(b))(s)
+	lens._update(const(b))(s)
 }
 
 public func set<S, A, B, T>(_ lens: Lens<S, A, B, T>, _ b: B) -> (_ s: S) -> T {
-    return { $0
-	 	|> lens._update(const(b))
-	}
+	lens._update(const(b))
 }
 
 public func set<S, A>(_ path: WritableKeyPath<S, A>, _ a: A) -> (_ s: S) -> S {
-    return { $0
-	 	|> update(path, const(a))
-	}
+	update(path, const(a))
 }
 
 public func prop<S, A>(_ keyPath: WritableKeyPath<S, A>)
 	-> Lens<S, A, A, S> {
-	return Lens<S, A, A, S>(get: { (s: S) -> A in
-		return s[keyPath: keyPath]
-	}, update: { (f: @escaping ((A) -> A)) -> (S) -> S in
-		return { s in
-			var copy = s
-			copy[keyPath: keyPath] = f(copy[keyPath: keyPath])
-			return copy
-		}
-	})
+		Lens<S, A, A, S>(get: { (s: S) -> A in
+			s[keyPath: keyPath]
+		}, update: { (f: @escaping ((A) -> A)) -> (S) -> S in
+			{ s in
+				var copy = s
+				copy[keyPath: keyPath] = f(copy[keyPath: keyPath])
+				return copy
+			}
+		})
 }
 
 

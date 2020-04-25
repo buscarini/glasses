@@ -57,6 +57,7 @@ public func set<S, A, B, T>(_ t: Traversal<S, A, B, T>) -> (_ b: B) -> (_ s: S) 
 	}
 }
 
+
 //public func map<S: Sequence, B>(_ f: @escaping (S.Element) -> B) -> Traversal<S, S.Element, B> {
 //	return Traversal(get: { (s: S) -> [S.Element] in
 //		return s.map(id)

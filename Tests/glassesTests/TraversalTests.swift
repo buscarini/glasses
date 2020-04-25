@@ -64,8 +64,10 @@ class TraversalTests: XCTestCase {
 	}
 	
 	func testPrefix() {
+		let t = (_map() <<< prop(\Person.name)).prefix(2)
+		
 		let res = TraversalTests.examples
-			|> update(prefix(2) <<< prop(\Person.name)) { string in
+			|> update(t) { string in
 				string.uppercased()
 			}
 		

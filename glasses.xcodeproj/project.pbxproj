@@ -53,6 +53,9 @@
 		ACA271232453A839005BAAF3 /* Fold+Semigroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */; };
 		ACA271252453A86D005BAAF3 /* Array+Semigroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271242453A86D005BAAF3 /* Array+Semigroup.swift */; };
 		ACA271272453A99E005BAAF3 /* Fold+Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271262453A99E005BAAF3 /* Fold+Getter.swift */; };
+		ACA2712924545CD5005BAAF3 /* Fold+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2712824545CD5005BAAF3 /* Fold+Array.swift */; };
+		ACA2712B245461DC005BAAF3 /* Prism+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2712A245461DC005BAAF3 /* Prism+Enum.swift */; };
+		ACA2712E24549F03005BAAF3 /* Traversal1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2712D24549F03005BAAF3 /* Traversal1.swift */; };
 		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
 		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
 		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
@@ -62,9 +65,9 @@
 		ACB2F5E023CC8F4100C93822 /* MLens+Constructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DD23CC8F4100C93822 /* MLens+Constructor.swift */; };
 		ACB2F5E123CC8F4100C93822 /* MLens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DE23CC8F4100C93822 /* MLens+Composition.swift */; };
 		ACB2F5E223CC8F4100C93822 /* MLens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5DF23CC8F4100C93822 /* MLens.swift */; };
-		ACB2F5ED23CC8F5100C93822 /* Prism+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */; };
+		ACB2F5ED23CC8F5100C93822 /* Traversal1+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E323CC8F5000C93822 /* Traversal1+Array.swift */; };
 		ACB2F5EE23CC8F5100C93822 /* Prism.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E423CC8F5000C93822 /* Prism.swift */; };
-		ACB2F5EF23CC8F5100C93822 /* Prism+As.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E523CC8F5000C93822 /* Prism+As.swift */; };
+		ACB2F5EF23CC8F5100C93822 /* Traversal1+As.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E523CC8F5000C93822 /* Traversal1+As.swift */; };
 		ACB2F5F023CC8F5100C93822 /* Prism+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */; };
 		ACB2F5F123CC8F5100C93822 /* Prism+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */; };
 		ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */; };
@@ -195,6 +198,9 @@
 		ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Semigroup.swift"; sourceTree = "<group>"; };
 		ACA271242453A86D005BAAF3 /* Array+Semigroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Semigroup.swift"; sourceTree = "<group>"; };
 		ACA271262453A99E005BAAF3 /* Fold+Getter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Getter.swift"; sourceTree = "<group>"; };
+		ACA2712824545CD5005BAAF3 /* Fold+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Fold+Array.swift"; sourceTree = "<group>"; };
+		ACA2712A245461DC005BAAF3 /* Prism+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Enum.swift"; sourceTree = "<group>"; };
+		ACA2712D24549F03005BAAF3 /* Traversal1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversal1.swift; sourceTree = "<group>"; };
 		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
@@ -204,9 +210,9 @@
 		ACB2F5DD23CC8F4100C93822 /* MLens+Constructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLens+Constructor.swift"; sourceTree = "<group>"; };
 		ACB2F5DE23CC8F4100C93822 /* MLens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MLens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5DF23CC8F4100C93822 /* MLens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLens.swift; sourceTree = "<group>"; };
-		ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Array.swift"; sourceTree = "<group>"; };
+		ACB2F5E323CC8F5000C93822 /* Traversal1+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal1+Array.swift"; sourceTree = "<group>"; };
 		ACB2F5E423CC8F5000C93822 /* Prism.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prism.swift; sourceTree = "<group>"; };
-		ACB2F5E523CC8F5000C93822 /* Prism+As.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+As.swift"; sourceTree = "<group>"; };
+		ACB2F5E523CC8F5000C93822 /* Traversal1+As.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Traversal1+As.swift"; sourceTree = "<group>"; };
 		ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Optional.swift"; sourceTree = "<group>"; };
 		ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Dictionary.swift"; sourceTree = "<group>"; };
 		ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Prism+Composition.swift"; sourceTree = "<group>"; };
@@ -349,6 +355,8 @@
 				ACB2F5C823CC8F1200C93822 /* Protocols */,
 				ACB2F5CD23CC8F1200C93822 /* Setters */,
 				ACB2F5CA23CC8F1200C93822 /* Support Files */,
+				ACB2F5EB23CC8F5000C93822 /* Lens+Prism.swift */,
+				ACA2712C24549EEB005BAAF3 /* Traversal1 */,
 				ACB2F5C623CC8F1200C93822 /* Traversal */,
 				ACA270DD245370FC005BAAF3 /* Fold */,
 				ACB2F61123CC8FFB00C93822 /* Prelude */,
@@ -407,6 +415,7 @@
 				ACA271222453A839005BAAF3 /* Fold+Semigroup.swift */,
 				ACA2710A24539DAA005BAAF3 /* Fold+Monoid.swift */,
 				ACA2711E2453A68C005BAAF3 /* Fold+Utils.swift */,
+				ACA2712824545CD5005BAAF3 /* Fold+Array.swift */,
 				ACA271182453A318005BAAF3 /* Fold+KeyPath.swift */,
 				ACA270FF24539BB7005BAAF3 /* Func+Fold.swift */,
 				ACA2710524539CBB005BAAF3 /* Lens+Fold.swift */,
@@ -432,6 +441,16 @@
 				ACA270E124539824005BAAF3 /* Either.swift */,
 			);
 			path = Either;
+			sourceTree = "<group>";
+		};
+		ACA2712C24549EEB005BAAF3 /* Traversal1 */ = {
+			isa = PBXGroup;
+			children = (
+				ACA2712D24549F03005BAAF3 /* Traversal1.swift */,
+				ACB2F5E523CC8F5000C93822 /* Traversal1+As.swift */,
+				ACB2F5E323CC8F5000C93822 /* Traversal1+Array.swift */,
+			);
+			path = Traversal1;
 			sourceTree = "<group>";
 		};
 		ACB2F5C623CC8F1200C93822 /* Traversal */ = {
@@ -497,15 +516,13 @@
 		ACB2F5CC23CC8F1200C93822 /* Prism */ = {
 			isa = PBXGroup;
 			children = (
-				ACB2F5EB23CC8F5000C93822 /* Lens+Prism.swift */,
 				ACB2F5E423CC8F5000C93822 /* Prism.swift */,
-				ACB2F5E323CC8F5000C93822 /* Prism+Array.swift */,
-				ACB2F5E523CC8F5000C93822 /* Prism+As.swift */,
+				ACA2712A245461DC005BAAF3 /* Prism+Enum.swift */,
 				ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */,
 				ACB2F5E723CC8F5000C93822 /* Prism+Dictionary.swift */,
 				ACB2F5EC23CC8F5000C93822 /* Prism+Getter.swift */,
-				ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */,
 				ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */,
+				ACB2F5E623CC8F5000C93822 /* Prism+Optional.swift */,
 			);
 			path = Prism;
 			sourceTree = "<group>";
@@ -854,6 +871,7 @@
 				ACB2F5E223CC8F4100C93822 /* MLens.swift in Sources */,
 				ACA271192453A318005BAAF3 /* Fold+KeyPath.swift in Sources */,
 				ACB2F5F423CC8F5100C93822 /* Prism+Setter.swift in Sources */,
+				ACA2712E24549F03005BAAF3 /* Traversal1.swift in Sources */,
 				ACA270F124539824005BAAF3 /* Either+Codable.swift in Sources */,
 				ACA271232453A839005BAAF3 /* Fold+Semigroup.swift in Sources */,
 				ACA270F024539824005BAAF3 /* Either+Applicative.swift in Sources */,
@@ -863,11 +881,11 @@
 				ACB2F61523CC900300C93822 /* PrecedenceGroups.swift in Sources */,
 				ACB2F5E023CC8F4100C93822 /* MLens+Constructor.swift in Sources */,
 				ACA271152453A1BD005BAAF3 /* Optional+Fold.swift in Sources */,
-				ACB2F5ED23CC8F5100C93822 /* Prism+Array.swift in Sources */,
+				ACB2F5ED23CC8F5100C93822 /* Traversal1+Array.swift in Sources */,
 				ACB2F64623CCB6BD00C93822 /* Traversal+Utils.swift in Sources */,
 				ACB2F60923CC8F7200C93822 /* Traversal+Getter.swift in Sources */,
 				ACA270EF24539824005BAAF3 /* Either+Zip.swift in Sources */,
-				ACB2F5EF23CC8F5100C93822 /* Prism+As.swift in Sources */,
+				ACB2F5EF23CC8F5100C93822 /* Traversal1+As.swift in Sources */,
 				ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */,
 				ACA271172453A211005BAAF3 /* Either+Fold.swift in Sources */,
 				ACB2F61923CC906A00C93822 /* Iso.swift in Sources */,
@@ -909,9 +927,11 @@
 				ACB2F60C23CC8F7200C93822 /* Traversal+Tuple.swift in Sources */,
 				ACA270B5245331B4005BAAF3 /* Semigroup+Position.swift in Sources */,
 				ACB2F60B23CC8F7200C93822 /* Traversal+Array.swift in Sources */,
+				ACA2712B245461DC005BAAF3 /* Prism+Enum.swift in Sources */,
 				ACA2711D2453A5D4005BAAF3 /* Fold+Filter.swift in Sources */,
 				ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */,
 				ACB2F5F123CC8F5100C93822 /* Prism+Dictionary.swift in Sources */,
+				ACA2712924545CD5005BAAF3 /* Fold+Array.swift in Sources */,
 				ACA270EB24539824005BAAF3 /* Either+Optional.swift in Sources */,
 				ACB2F60823CC8F7200C93822 /* Traversal+Setter.swift in Sources */,
 				ACB2F64223CC944800C93822 /* Iso+Numeric.swift in Sources */,
