@@ -10,8 +10,4 @@ import Foundation
 extension Lens: Getter {
 	public typealias Root = S
 	public typealias Value = A
-	
-	public func get(_ s: S) -> A {
-		return self._get(s)
-	}
 }

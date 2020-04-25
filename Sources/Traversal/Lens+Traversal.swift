@@ -11,7 +11,7 @@ public extension Lens {
 	func traversal() -> Traversal<S, A, B, T> {
 		.init(
 			get: { s in
-				[self.get(s)]
+				[self._get(s)]
 			},
 			update: { f in
 				{ s in

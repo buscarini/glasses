@@ -17,8 +17,8 @@ public func withDefault<S, A, B, T>(
 			},
 			update: { f in
 				{ s in
-					update(prism, f, s)
-						?? set(prism, f(value), s)
+					let a = prism._extract(s) ?? value
+					return prism._embed(f(a))
 				}
 			}
 		)
@@ -30,7 +30,7 @@ public func ?? <S, A, B, T>(_ prism: Prism<S, A, B, T>, value: A) -> Lens<S, A, 
 }
 
 public extension Prism {
-	func `default`<S, A, B, T>(_ value: A) -> Lens<S, A, B, T> {
+	func `default`(_ value: A) -> Lens<S, A, B, T> {
 		withDefault(value)(self)
 	}
 }
@@ -109,33 +109,33 @@ public func compose<S, A, B, T, C, D>(
 
 
 // MARK: Prism + Lens
-public func compose<S, A, B, T, C, D>(_ left: Prism<S, A, B, T>, _ right: Lens<A, C, D, B>) -> Prism<S, C, D, T> {
-	return Prism(get: { (s: S) -> C? in
-		return left._get(s).map(right._get)
-	}, update: { (f: @escaping ((C) -> D)) -> (S) -> T in
-		{ (s: S) in
-			return left._update { a in
-				return right._update(f)(a)
-				}(s)
-		}
-	})
-}
+//public func compose<S, A, B, T, C, D>(_ left: Prism<S, A, B, T>, _ right: Lens<A, C, D, B>) -> Prism<S, C, D, T> {
+//	return Prism(get: { (s: S) -> C? in
+//		return left._get(s).map(right._get)
+//	}, update: { (f: @escaping ((C) -> D)) -> (S) -> T in
+//		{ (s: S) in
+//			return left._update { a in
+//				return right._update(f)(a)
+//				}(s)
+//		}
+//	})
+//}
 
-public func <<< <S, A, B, T, C, D>(_ left: Prism<S, A, B, T>, _ right: Lens<A, C, D, B>) -> Prism<S, C, D, T> {
-	return compose(left, right)
-}
-
-public func <<< <S, A, B>(_ left: Prism<S, A, A, S>, _ right: WritableKeyPath<A, B>) -> Prism<S, B, B, S> {
-	return compose(left, right.lens)
-}
-
-public func >>> <S, A, B>(_ left: Prism<A, B, B, A>, _ right: WritableKeyPath<S, A>) -> Prism<S, B, B, S> {
-	return compose(right.lens, left)
-}
-
-public func >>> <S, A, B, T, C, D>(_ left: Prism<A, C, D, B>, _ right: Lens<S, A, B, T>) -> Prism<S, C, D, T> {
-	return compose(right, left)
-}
-
+//public func <<< <S, A, B, T, C, D>(_ left: Prism<S, A, B, T>, _ right: Lens<A, C, D, B>) -> Prism<S, C, D, T> {
+//	return compose(left, right)
+//}
+//
+//public func <<< <S, A, B>(_ left: Prism<S, A, A, S>, _ right: WritableKeyPath<A, B>) -> Prism<S, B, B, S> {
+//	return compose(left, right.lens)
+//}
+//
+//public func >>> <S, A, B>(_ left: Prism<A, B, B, A>, _ right: WritableKeyPath<S, A>) -> Prism<S, B, B, S> {
+//	return compose(right.lens, left)
+//}
+//
+//public func >>> <S, A, B, T, C, D>(_ left: Prism<A, C, D, B>, _ right: Lens<S, A, B, T>) -> Prism<S, C, D, T> {
+//	return compose(right, left)
+//}
+//
 
 
