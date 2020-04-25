@@ -31,12 +31,12 @@ class PrismTests: XCTestCase {
 	}
 	
 	// MARK: Optional
-	//    func testGetOptional() {
-	//		let value: String? = PrismTests.value
-	//			|> get(some())
-	//
-	//		XCTAssertEqual(value, PrismTests.value)
-	//    }
+	func testGetOptional() {
+		let value: String? = PrismTests.value
+			|> extract(/String?.some)
+		
+		XCTAssertEqual(value, PrismTests.value)
+	}
 	
 //	func testSetOptional() {
 //		let value = embed(some(), PrismTests.otherValue)
@@ -53,12 +53,12 @@ class PrismTests: XCTestCase {
 //	}
 	
 	// MARK: Result
-//	func testGetResult() {
-//		let value: String? = PrismTests.example
-//			|> extract(Result._success())
-//
-//		XCTAssertEqual(value, PrismTests.value)
-//	}
+	func testGetResult() {
+		let value: String? = PrismTests.example
+			|> extract(/Result.success)
+		
+		XCTAssertEqual(value, PrismTests.value)
+	}
 	
 	//    func testGetResultDefault() {
 	//		let value: String? = PrismTests.failure
