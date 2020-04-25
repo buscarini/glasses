@@ -7,6 +7,14 @@
 
 import Foundation
 
+public extension Prism {
+	func compose<C, D>(
+		_ right: Prism<A, C, D, B>
+	) -> Prism<S, C, D, T> {
+		glasses.compose(self, right)
+	}
+}
+
 
 public func compose<S, A, B, T, C, D>(
 	_ left: Prism<S, A, B, T>,
@@ -15,10 +23,10 @@ public func compose<S, A, B, T, C, D>(
 	.init(
 		embed: { d in
 			left._embed(right._embed(d))
-		},
+	},
 		extract: { s in
 			left._extract(s).flatMap(right._extract)
-		}
+	}
 	)
 }
 

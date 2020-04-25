@@ -58,6 +58,8 @@
 		ACA2712E24549F03005BAAF3 /* Traversal1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2712D24549F03005BAAF3 /* Traversal1.swift */; };
 		ACA271302454B8A7005BAAF3 /* Lens+Traversal1.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA2712F2454B8A7005BAAF3 /* Lens+Traversal1.swift */; };
 		ACA271322454B933005BAAF3 /* Lens+Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271312454B933005BAAF3 /* Lens+Methods.swift */; };
+		ACA271342454C094005BAAF3 /* Prism+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271332454C094005BAAF3 /* Prism+Operator.swift */; };
+		ACA271362454C23A005BAAF3 /* Prism+Creation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA271352454C23A005BAAF3 /* Prism+Creation.swift */; };
 		ACB2F5D623CC8F3B00C93822 /* Lens.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5CF23CC8F3A00C93822 /* Lens.swift */; };
 		ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */; };
 		ACB2F5D923CC8F3B00C93822 /* Lens+Constructors.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */; };
@@ -205,6 +207,8 @@
 		ACA2712D24549F03005BAAF3 /* Traversal1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Traversal1.swift; sourceTree = "<group>"; };
 		ACA2712F2454B8A7005BAAF3 /* Lens+Traversal1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lens+Traversal1.swift"; sourceTree = "<group>"; };
 		ACA271312454B933005BAAF3 /* Lens+Methods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Lens+Methods.swift"; sourceTree = "<group>"; };
+		ACA271332454C094005BAAF3 /* Prism+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Operator.swift"; sourceTree = "<group>"; };
+		ACA271352454C23A005BAAF3 /* Prism+Creation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Prism+Creation.swift"; sourceTree = "<group>"; };
 		ACB2F5CF23CC8F3A00C93822 /* Lens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lens.swift; sourceTree = "<group>"; };
 		ACB2F5D123CC8F3A00C93822 /* Lens+Composition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Composition.swift"; sourceTree = "<group>"; };
 		ACB2F5D223CC8F3A00C93822 /* Lens+Constructors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lens+Constructors.swift"; sourceTree = "<group>"; };
@@ -524,7 +528,9 @@
 			isa = PBXGroup;
 			children = (
 				ACB2F5E423CC8F5000C93822 /* Prism.swift */,
+				ACA271352454C23A005BAAF3 /* Prism+Creation.swift */,
 				ACA2712A245461DC005BAAF3 /* Prism+Enum.swift */,
+				ACA271332454C094005BAAF3 /* Prism+Operator.swift */,
 				ACB2F5E923CC8F5000C93822 /* Prism+Composition.swift */,
 				ACB2F5EC23CC8F5000C93822 /* Prism+Getter.swift */,
 				ACB2F5EA23CC8F5000C93822 /* Prism+Setter.swift */,
@@ -871,6 +877,7 @@
 				ACB2F64423CC9ACF00C93822 /* Iso+Composition.swift in Sources */,
 				ACA270ED24539824005BAAF3 /* Either+Error.swift in Sources */,
 				ACB2F5F523CC8F5100C93822 /* Lens+Prism.swift in Sources */,
+				ACA271362454C23A005BAAF3 /* Prism+Creation.swift in Sources */,
 				ACB2F5E123CC8F4100C93822 /* MLens+Composition.swift in Sources */,
 				ACA270AF245331B4005BAAF3 /* Array+Monoid.swift in Sources */,
 				ACA270FD24539A82005BAAF3 /* Traversal+Fold.swift in Sources */,
@@ -895,6 +902,7 @@
 				ACB2F5F323CC8F5100C93822 /* Prism+Composition.swift in Sources */,
 				ACA271172453A211005BAAF3 /* Either+Fold.swift in Sources */,
 				ACB2F61923CC906A00C93822 /* Iso.swift in Sources */,
+				ACA271342454C094005BAAF3 /* Prism+Operator.swift in Sources */,
 				ACB2F5D823CC8F3B00C93822 /* Lens+Composition.swift in Sources */,
 				ACB2F5DC23CC8F3B00C93822 /* Lens+Setter.swift in Sources */,
 				ACA2710424539C50005BAAF3 /* Fold+Composition.swift in Sources */,

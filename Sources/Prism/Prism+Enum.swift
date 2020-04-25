@@ -15,7 +15,9 @@ extension Prism where S == T, A == B {
 	/// - Note: This function is only intended to be used with enum case initializers. Its behavior is otherwise undefined.
 	/// - Parameter embed: An enum case initializer.
 	/// - Returns: A case path that extracts associated values from enum cases.
-	public static func `enum`(_ embed: @escaping (Value) -> Root) -> Prism {
+	public static func `case`(
+		_ embed: @escaping (A) -> S
+	) -> Prism {
 		self.init(
 			embed: embed,
 			extract: { s in
@@ -31,7 +33,7 @@ extension Prism where A == Void, S == T, A == B {
 	/// - Note: This function is only intended to be used with enum cases that have no associated values. Its behavior is otherwise undefined.
 	/// - Parameter value: An enum case with no associated values.
 	/// - Returns: A case path that extracts `()` if the case matches, otherwise `nil`.
-	public static func `enum`(_ value: Root) -> Prism {
+	public static func `case`(_ value: S) -> SimplePrism<S, A> {
 		let label = "\(value)"
 		return Prism(
 			embed: { value },
