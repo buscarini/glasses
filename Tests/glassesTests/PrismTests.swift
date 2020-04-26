@@ -86,6 +86,22 @@ class PrismTests: XCTestCase {
 				
 		XCTAssertEqual(value, PrismTests.otherValue)
 	}
+	
+	// MARK: Composition
+	func testGetComposed() {
+		let state = Result<Either<Int, String>, Error>.success(
+			.right(PrismTests.value)
+		)
+		
+		let value: String? = state
+			|> extract(Result._success() <<< Either._right())
+		
+		XCTAssertEqual(value, PrismTests.value)
+		
+		XCTAssertNil(state
+			|> extract(Result._success() <<< Either._left())
+		)
+	}
 }
 
 

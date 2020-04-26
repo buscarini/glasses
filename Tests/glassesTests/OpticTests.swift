@@ -38,11 +38,11 @@ class OpticTests: XCTestCase {
 		return o.set
 	}
 	
-//	func testOptic() {
-//		let o = OpticTests.firstName
-//		
-//		let result = OpticTests.examples |> OpticTests.read(o)
-//		XCTAssertTrue(result == OpticTests.otherName)
-//	}
+	func testOptic() {
+		let o = OpticTests.firstName
+		
+		let result = OpticTests.examples |> OpticTests.read(o)
+		XCTAssertTrue(result == OpticTests.otherName)
+	}
 }
 
