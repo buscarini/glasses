@@ -27,7 +27,15 @@ public func get<S, A, B, T>(_ t: Traversal1<S, A, B, T>, _ s: S) -> A? {
 	t._get(s)
 }
 
+public func get<S, A>(_ t: SimpleTraversal1<S, A>, _ s: S) -> A? {
+	t._get(s)
+}
+
 public func get<S, A, B, T>(_ t: Traversal1<S, A, B, T>) -> (_ s: S) -> A? {
+	t._get
+}
+
+public func get<S, A>(_ t: SimpleTraversal1<S, A>) -> (_ s: S) -> A? {
 	t._get
 }
 

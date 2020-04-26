@@ -27,7 +27,17 @@ public func extract<S, A, B, T>(_ prism: Prism<S, A, B, T>, _ s: S) -> A? {
 	prism._extract(s)
 }
 
+public func extract<S, A>(_ prism: SimplePrism<S, A>, _ s: S) -> A? {
+	prism._extract(s)
+}
+
 public func extract<S, A, B, T>(_ prism: Prism<S, A, B, T>) -> (_ s: S) -> A? {
+	{ s in
+		prism._extract(s)
+	}
+}
+
+public func extract<S, A>(_ prism: SimplePrism<S, A>) -> (_ s: S) -> A? {
 	{ s in
 		prism._extract(s)
 	}

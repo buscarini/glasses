@@ -20,11 +20,22 @@ public struct Traversal<S, A, B, T> {
 public typealias SimpleTraversal<S, A> = Traversal<S, A, A, S>
 
 @inlinable
-public func get<S, A>(_ t: Traversal<S, A, A, S>, _ s: S) -> [A] {
+public func get<S, A, B, T>(_ t: Traversal<S, A, B, T>, _ s: S) -> [A] {
 	get(t)(s)
 }
 
-public func get<S, A>(_ t: Traversal<S, A, A, S>) -> (_ s: S) -> [A] {
+@inlinable
+public func get<S, A>(_ t: SimpleTraversal<S, A>, _ s: S) -> [A] {
+	get(t)(s)
+}
+
+public func get<S, A, B, T>(_ t: Traversal<S, A, B, T>) -> (_ s: S) -> [A] {
+	{ s in
+		t._get(s)
+	}
+}
+
+public func get<S, A>(_ t: SimpleTraversal<S, A>) -> (_ s: S) -> [A] {
 	{ s in
 		t._get(s)
 	}

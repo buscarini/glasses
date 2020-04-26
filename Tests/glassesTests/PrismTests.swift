@@ -29,61 +29,63 @@ class PrismTests: XCTestCase {
 	static var failure: Result<String, Error> {
 		return Result.failure(E.err)
 	}
-	
-	// MARK: Optional
-	func testGetOptional() {
-		let value: String? = PrismTests.value
-			|> extract(/String?.some)
+
+	// MARK: Either
+	func testGetEither() {
+		let value: Int? = Either<Int, String>.left(2)
+			|> extract(Either._left())
 		
-		XCTAssertEqual(value, PrismTests.value)
+		XCTAssertEqual(value, 2)
+		
+		XCTAssertNil(
+			Either<Int, String>.left(2) |> extract(Either._right())
+		)
+		
+		let value2: String? = Either<Int, String>.right("hello")
+			|> extract(Either._right())
+		
+		XCTAssertNil(
+			Either<Int, String>.right("hello") |> extract(Either._left())
+		)
+		
+		XCTAssertEqual(value2, "hello")
 	}
 	
-//	func testSetOptional() {
-//		let value = embed(some(), PrismTests.otherValue)
-//			|> get(some())
-//		
-//		XCTAssertEqual(value, PrismTests.otherValue)
-//		
-//		let name: String? = nil
-//		let value2 = name
-//			|> set(some())(PrismTests.otherValue)
-//			|> get(some())
-//		
-//		XCTAssertEqual(value2, nil)
-//	}
-	
 	// MARK: Result
-	func testGetResult() {
+	func testGetResultPath() {
 		let value: String? = PrismTests.example
 			|> extract(/Result.success)
 		
 		XCTAssertEqual(value, PrismTests.value)
 	}
 	
-	//    func testGetResultDefault() {
-	//		let value: String? = PrismTests.failure
-	//			|> get(Result._success() |> _default(PrismTests.value2))
-	//
-	//		XCTAssertEqual(value, PrismTests.value2)
-	//    }
+	func testGetResult() {
+		let value: String? = PrismTests.example
+			|> extract(Result._success())
+		
+		XCTAssertEqual(value, PrismTests.value)
+	}
 	
 	func testGetResultDefault() {
+		let value: String? = PrismTests.failure
+			|> get(Result._success().default(PrismTests.value2))
+		
+		XCTAssertEqual(value, PrismTests.value2)
+	}
+	
+	func testGetResultWithDefault() {
 		let value: String? = PrismTests.failure
 			|> get(Result._success() |> withDefault(PrismTests.value2))
 		
 		XCTAssertEqual(value, PrismTests.value2)
 	}
 	
-//	func testEmbedResult() {
-//		let value = embed(Result<Int, Error>._success(), PrismTests.otherValue)
-//			|> extract(Result._success())
-//		
-////		let value = PrismTests.example
-////			|> set(Result._success())(PrismTests.otherValue)
-////			|> get(Result._success())
-//		
-//		XCTAssertEqual(value, PrismTests.otherValue)
-//	}
+	func testEmbedResult() {
+		let value = embed(Result<Int, Error>._success(), PrismTests.otherValue)
+			|> extract(Result._success())
+				
+		XCTAssertEqual(value, PrismTests.otherValue)
+	}
 }
 
 
