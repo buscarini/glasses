@@ -41,7 +41,12 @@ public func each4<A, B> () -> Traversal<(A, A, A, A), A, B, (B, B, B, B)> {
 		},
 		update: { f in
 			{ s in
-				(f(s.0), f(s.1), f(s.2), f(s.3))
+				(
+					f(s.0),
+					f(s.1),
+					f(s.2),
+					f(s.3)
+				)
 			}
 		}
 	)

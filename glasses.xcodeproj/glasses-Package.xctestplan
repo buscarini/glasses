@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "BF1B5636-DF7B-4EBE-963C-6C296E9FA2C8",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:glasses.xcodeproj",
+        "identifier" : "glasses::glassesTests",
+        "name" : "glassesTests"
+      }
+    }
+  ],
+  "version" : 1
+}

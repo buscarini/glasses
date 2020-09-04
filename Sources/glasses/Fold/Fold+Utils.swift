@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Algebraic
 
 public extension Fold where A: Equatable {
 	func contains(
@@ -18,6 +19,10 @@ public extension Fold where A: Equatable {
 }
 
 public extension Fold {
+	func count(_ s: S) -> Int {
+		self.get(s).count
+	}
+	
 	func any(
 		_ pred: @escaping (A) -> Bool,
 		_ s: S

@@ -15,7 +15,7 @@ public extension Optional {
 				[s].compactMap { $0 }
 			},
 			update: { f in
-				{ s in
+				{ s in					
 					s.map(f)
 				}
 			}

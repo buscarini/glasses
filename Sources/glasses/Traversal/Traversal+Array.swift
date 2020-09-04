@@ -7,60 +7,66 @@
 
 import Foundation
 
-public extension Traversal where S == T {
-	func prefix<R>(
+public extension Traversal {
+	func prefix<Element>(
 		_ prefix: Int
-	) -> Traversal where S == [R] {
+	) -> Traversal where S == T, S == [Element] {
 		.init(get: { s in
 			Array(self._get(s).prefix(prefix))
 		}, update: { f in
 			{ rr in
-				let first = Array(rr.prefix(prefix))				
+				let first = rr.prefix(prefix)
 				let rest = rr.dropFirst(prefix)
 				let firstMapped = self._update(f)(Array(first))
-				return Array(firstMapped + rest)
+
+				return S(firstMapped + rest)
 			}
 		})
 	}
 }
 
-public func _map<A, B>() -> Traversal<[A], A, B, [B]> {
-	Traversal(get: { (s: [A]) in
+public func each<A, B>() -> Traversal<[A], A, B, [B]> {
+	Traversal<[A], A, B, [B]>(get: { (s: [A]) in
 		s
 	}, update: { (f: @escaping ((A) -> B)) -> ([A]) -> [B] in
-		{ s in
-			return s.map(f)
+		{ (s: [A]) -> [B] in
+			s.map(f)
 		}
 	})
 }
 
-public func _where<A>(_ f: @escaping (A) -> Bool) -> Traversal<[A], A, A, [A]> {
-	Traversal(get: { (s: [A]) in
-		s.filter(f)
-	}, update: { g in
-		{ s in
-			return s.map {
-				return f($0) ? g($0) : $0
-			}
-		}
-	})
-}
-
-public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -> Traversal<[A], A, A, [A]> {
-	Traversal(get: { (s: [A]) -> [A] in
-		s.filter { $0[keyPath: keyPath] == value }
-	}, update: { (f: @escaping ((A) -> A)) -> ([A]) -> [A] in
-		{ s in
-			s.map { item in
-				guard item[keyPath: keyPath] == value else {
-					return item
+public func filter<A>(
+	_ pred: @escaping (A) -> Bool
+) -> Traversal<[A], A, A, [A]> {
+	Traversal<[A], A, A, [A]>(
+		get: { (s: [A]) -> [A] in
+			s.filter(pred)
+		},
+		update: { (f: @escaping ((A) -> A)) -> ([A]) -> [A] in
+			{ (s: [A]) -> [A] in
+				s.map {
+					pred($0) ? f($0) : $0
 				}
-				
-				return f(item)
 			}
 		}
-	})
+	)
 }
+
+//public func _where<A, P: Equatable>(_ keyPath: KeyPath<A, P>, equals value: P) -> Traversal<[A], A, A, [A]> {
+//	Traversal(get: { (s: [A]) -> [A] in
+//		s.filter { $0[keyPath: keyPath] == value }
+//	}, update: { (f: @escaping ((A) -> A)) -> ([A]) -> A in
+//		{ s in
+//			s.map { item in
+//				guard item[keyPath: keyPath] == value else {
+//					return item
+//				}
+//
+//				return f(item)
+//			}
+//		}
+//	})
+//}
 
 public func taking<A>(
 	_ prefix: Int
@@ -79,7 +85,9 @@ public func taking<A>(
 	}
 }
 
-public func prefix<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> {
+public func prefix<A>(
+	_ prefix: Int
+) -> Traversal<[A], A, A, [A]> {
 	.init(
 		get: { aa in
 			Array(aa.prefix(prefix))
@@ -94,7 +102,9 @@ public func prefix<A>(_ prefix: Int) -> Traversal<[A], A, A, [A]> {
 	)
 }
 
-public func suffix<A>(_ suffix: Int) -> Traversal<[A], A, A, [A]> {
+public func suffix<A>(
+	_ suffix: Int
+) -> Traversal<[A], A, A, [A]> {
 	.init(
 		get: { aa in
 			Array(aa.suffix(suffix))

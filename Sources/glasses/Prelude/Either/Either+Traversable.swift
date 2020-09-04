@@ -48,6 +48,20 @@ public extension Either {
 	}
 }
 
+public extension Either where A == B {
+	@inlinable
+	func traverseBoth<C>(
+		_ f: @escaping (A) -> C
+	) -> Either<C, C> {
+		switch self {
+		case let .left(a):
+			return Either<C, C>.left(f(a))
+		case let .right(a):
+			return Either<C, C>.right(f(a))
+		}
+	}
+}
+
 public extension Array {
 	@inlinable
 	func traverse<E, B>(_ f: @escaping (Element) -> Either<E, B>) -> Either<E, [B]> {

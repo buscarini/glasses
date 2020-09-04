@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Algebraic
 
 public extension Traversal {
 	func reduced(

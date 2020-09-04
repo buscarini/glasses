@@ -19,7 +19,7 @@ public extension Either where A == B {
 			},
 			update: { f in
 				{ s in
-					s.bimap(f, f)
+					s.traverseBoth(f)
 				}
 			}
 		)
