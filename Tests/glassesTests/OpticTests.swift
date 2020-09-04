@@ -26,8 +26,8 @@ class OpticTests: XCTestCase {
 		]
 	}
 	
-	static var firstName: SimplePrism<[Person], String> {
-		return _index(1) <<< \Person.name
+	static var firstName: SimpleTraversal1<[Person], String> {
+		Array._index(1) <<< prop(\Person.name).traversal1()
 	}
 	
 	static func read<O: Optic>(_ o: O) -> (_ entity: O.Root) -> O.Value {

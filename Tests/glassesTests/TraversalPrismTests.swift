@@ -30,16 +30,20 @@ class TraversalPrismTests: XCTestCase {
     // MARK: First
 	func testGetArrayFirstWhere() {
 		let value: Person? = TraversalPrismTests.examples
-			|> get(_first(where: \Person.name, equals: TraversalPrismTests.theName))
+			|> get([Person]._first(where: \Person.name, equals: TraversalPrismTests.theName))
 
 		XCTAssertEqual(value?.id, "2")
-		XCTAssertEqual(value?.name, PrismTests.person1.name)
+		XCTAssertEqual(value?.name, Traversal1Tests.person1.name)
     }
 	
 	func testSetArrayFirstWhere() {
 		let people = TraversalPrismTests.examples
-		let modified = people
-			|> set(_first(where: \.name, equals: TraversalPrismTests.theName) <<< prop(\.name))(TraversalPrismTests.value)
+		let modified = (
+			people |> set(
+				[Person]._first(where: \Person.name, equals: TraversalPrismTests.theName)
+					<<< prop(\Person.name).traversal1()
+			, TraversalPrismTests.value)
+		) ?? people
 
 		XCTAssertEqual(modified[0].id, "1")
 		XCTAssertEqual(modified[0].name, TraversalPrismTests.otherName)
@@ -57,16 +61,21 @@ class TraversalPrismTests: XCTestCase {
     // MARK: Last
 	func testGetArrayLastWhere() {
 		let value: Person? = TraversalPrismTests.examples
-			|> get(_last(where: \.name, equals: TraversalPrismTests.theName))
+			|> get([Person]._last(where: \Person.name, equals: TraversalPrismTests.theName))
 
 		XCTAssertEqual(value?.id, "3")
-		XCTAssertEqual(value?.name, PrismTests.person1.name)
+		XCTAssertEqual(value?.name, Traversal1Tests.person1.name)
     }
 	
 	func testSetArrayLastWhere() {
 		let people = TraversalPrismTests.examples
-		let modified = people
-			|> set(_last(where: \.name, equals: TraversalPrismTests.theName) <<< prop(\.name))(TraversalPrismTests.value)
+		let modified = (
+			people |> set(
+				[Person]._last(where: \Person.name, equals: TraversalPrismTests.theName)
+					<<< prop(\Person.name).traversal1()
+				, TraversalPrismTests.value
+			)
+		) ?? people
 
 		XCTAssertEqual(modified[0].id, "1")
 		XCTAssertEqual(modified[0].name, TraversalPrismTests.otherName)
