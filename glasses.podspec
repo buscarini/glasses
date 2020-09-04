@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "0.1"
   s.summary      = ""
   s.description  = <<-DESC
-    Your description here.
+    Optics for Swift
   DESC
   s.homepage     = "git@github.com:buscarini/glasses"
   s.license      = { :type => "MIT", :file => "LICENSE" }

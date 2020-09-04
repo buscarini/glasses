@@ -3,20 +3,20 @@ import glasses
 
 
 class TraversalCompositionTests: XCTestCase {
-
+	
 	static let number1 = 1
 	static let number2 = 22
 	static let number3 = 3
-
+	
 	struct Street {
 		var number: Int
 	}
-
+	
 	struct Address {
 		var city: String
 		var streets: [Street]
 	}
-
+	
 	struct Person {
 		var name: String
 		var addresses: [Address]
@@ -41,42 +41,50 @@ class TraversalCompositionTests: XCTestCase {
 		return Person(name: "Pepe", addresses: TraversalCompositionTests.exampleAddresses)
 	}
 	
-    func testGet() {
+	func testGet() {
 		let numbers = TraversalCompositionTests.examplePerson
-			|> get(\Person.addresses <<< _map() <<< \Address.streets <<< _map() <<< \Street.number)
-
+			|> get(prop(\Person.addresses).traversal()
+				<<< each()
+				<<< prop(\Address.streets).traversal()
+				<<< each()
+				<<< prop(\Street.number).traversal()
+		)
+		
 		XCTAssertEqual(numbers, [
 			TraversalCompositionTests.number1,
 			TraversalCompositionTests.number2,
 			TraversalCompositionTests.number1,
 			TraversalCompositionTests.number2
 		])
-    }
+	}
 	
-    private var streetNumbers: Traversal<TraversalCompositionTests.Person, Int, Int, TraversalCompositionTests.Person> {
-		return \Person.addresses <<< _map() <<< \Address.streets <<< _map() <<< \Street.number
+	private var streetNumbers: SimpleTraversal<TraversalCompositionTests.Person, Int> {
+		return prop(\Person.addresses).traversal()
+			<<< each()
+			<<< prop(\Address.streets).traversal()
+			<<< each()
+			<<< prop(\Street.number).traversal()
+		
 	}
 	
 	func testUpdate() {
 		let numbers = TraversalCompositionTests.examplePerson
 			|> update(streetNumbers) { $0 + 1 }
 			|> get(streetNumbers)
-
+		
 		XCTAssertEqual(numbers, [
 			TraversalCompositionTests.number1,
 			TraversalCompositionTests.number2,
 			TraversalCompositionTests.number1,
 			TraversalCompositionTests.number2
-		].map { $0+1 })
+			].map { $0+1 })
 	}
-
-	func testSet() {
-//		let streetNumbers = (\Person.addresses <<< Array.map() <<< \Address.streets <<< Array.map() <<< \Street.number)
 	
+	func testSet() {		
 		let numbers = TraversalCompositionTests.examplePerson
 			|> set(streetNumbers)(TraversalCompositionTests.number3)
 			|> get(streetNumbers)
-
+		
 		XCTAssertEqual(numbers, [
 			TraversalCompositionTests.number3,
 			TraversalCompositionTests.number3,
