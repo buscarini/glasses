@@ -123,3 +123,26 @@ public extension Array {
 	}
 }
 
+public func first<Element>() -> Traversal1<[Element], Element, Element, [Element]> {
+	[Element]._first()
+}
+
+public func index<Element>(_ index: Int) -> Traversal1<[Element], Element, Element, [Element]> {
+	[Element]._index(index)
+}
+
+public func last<Element>() -> Traversal1<[Element], Element, Element, [Element]> {
+	[Element]._last()
+}
+
+public func first<A>(
+	where pred: @escaping (A) -> Bool
+) -> Traversal1<[A], A, A, [A]> {
+	[A]._first(where: pred)
+}
+
+public func last<A>(
+	where pred: @escaping (A) -> Bool
+) -> Traversal1<[A], A, A, [A]> {
+	[A]._last(where: pred)
+}

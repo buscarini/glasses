@@ -20,7 +20,7 @@ class Traversal1Tests: XCTestCase {
 	static let value2 = "Antonio"
 	
 	static let value3 = "Another"
-
+	
 	struct Person: Equatable {
 		var name: String
 		
@@ -112,11 +112,17 @@ class Traversal1Tests: XCTestCase {
 	}
 	
 	func testSetDic() {
-		
 		let dic = [ Traversal1Tests.value: 1, Traversal1Tests.value2: 2 ]
 			|> set_([String: Int]._value(key: Traversal1Tests.value), 7)
 		
 		XCTAssertEqual(dic |> get([String: Int]._value(key: Traversal1Tests.value)), 7)
 		XCTAssertEqual(dic |> get([String: Int]._value(key: Traversal1Tests.value2)), 2)
+	}
+	
+	func testFold() {
+		let values = Self.people
+			|> get(index(2).fold())
+		
+		XCTAssertEqual(values, [Traversal1Tests.person3])
 	}
 }
