@@ -1,5 +1,5 @@
 import Foundation
-import glasses
+import Glasses
 import XCTest
 
 class LensTests: XCTestCase {

@@ -1,9 +1,9 @@
 import Foundation
 import XCTest
-import glasses
+import Glasses
 
 class DroppingFirstTests: XCTestCase {
-	func testDropFirst() {
+	func testDroppingFirst() {
 		let people = Concat {
 			\Company.employees
 			\Company.freelance
@@ -25,9 +25,9 @@ class DroppingFirstTests: XCTestCase {
 		
 		XCTAssertEqual(
 			people
-				.droppingFirst(5)
+				.droppingFirst(20)
 				.get(company),
-			[ mike ]
+			[ ]
 		)
 	}
 }
