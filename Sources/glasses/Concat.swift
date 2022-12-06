@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Concat<Optics: Lens, Element>: Lens
+public struct Concat<Optics: LensOptic, Element>: LensOptic
 where Optics.Part == [Element] {
 	public typealias Whole = Optics.Whole
 	public typealias Part = Optics.Part
@@ -30,7 +30,7 @@ where Optics.Part == [Element] {
 	}
 }
 
-public struct ConcatLenses<LHS: Lens, RHS: Lens, Element>: Lens
+public struct ConcatLenses<LHS: LensOptic, RHS: LensOptic, Element>: LensOptic
 where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part, LHS.Part == [Element] {
 	let lhs: LHS
 	let rhs: RHS
@@ -63,11 +63,11 @@ where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part, LHS.Part == [Element] {
 
 @resultBuilder
 public enum ConcatLensesBuilder {
-	public static func buildPartialBlock<O: Lens>(first optic: O) -> O {
+	public static func buildPartialBlock<O: LensOptic>(first optic: O) -> O {
 		optic
 	}
 	
-	public static func buildPartialBlock<O0: Lens, O1: Lens, Element>(accumulated o0: O0, next o1: O1) -> ConcatLenses<O0, O1, Element> {
+	public static func buildPartialBlock<O0: LensOptic, O1: LensOptic, Element>(accumulated o0: O0, next o1: O1) -> ConcatLenses<O0, O1, Element> {
 		ConcatLenses(lhs: o0, rhs: o1)
 	}
 }

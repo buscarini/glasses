@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DroppingFirst<L: Lens, Element>: Lens
+public struct DroppingFirst<L: LensOptic, Element>: LensOptic
 where L.Part == [Element] {
 	public typealias Whole = L.Whole
 	public typealias Part = L.Part
@@ -35,7 +35,7 @@ where L.Part == [Element] {
 	}
 }
 
-extension Lens {
+extension LensOptic {
 	public func droppingFirst<Element>(
 		_ count: Int = 1
 	) -> DroppingFirst<Self, Element>

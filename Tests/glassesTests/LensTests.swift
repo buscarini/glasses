@@ -1,48 +1,45 @@
-
-import XCTest
+import Foundation
 import glasses
+import XCTest
 
 class LensTests: XCTestCase {
-	
-	static let theName = "Pepe"
-	static let otherName = "Antonio"
-	
-	struct Person {
-		var name: String
+	func testLens() {
+		let ceoAge = Lens {
+			\Company.ceo
+			\Person.age
+		}
+		
+		XCTAssertEqual(
+			ceoAge.get(company),
+			50
+		)
+		
+		ceoAge.update(&company, { $0 += 1 })
+		
+		XCTAssertEqual(
+			ceoAge.get(company),
+			51
+		)
 	}
 	
-	static var example: Person {
-		return Person(name: theName)
-	}
-	
-	func testGet() {
-		let lens = prop(\Person.name)
+	func testArrayProperty() {
+		let people = Concat {
+			\Company.employees
+			\Company.freelance
+		}
+
+		let names = Lens {
+			people
+			\Person.name
+		}
+
+		dump(
+			names.get(company)
+		)
 		
-		XCTAssertEqual(get(lens, LensTests.example), LensTests.theName)
-	}
-	
-	func testSet() {
-		let lens = prop(\Person.name)
-		
-		let res = LensTests.example
-			|> set(lens, LensTests.otherName)
-			|> get(lens)
-		
-		XCTAssertEqual(res, LensTests.otherName)
-	}
-	
-	func testTuple() {
-		let res = get(_1(), (LensTests.example, "Pepe"))
-		
-		XCTAssertEqual(res, "Pepe")
-	}
-	
-	func testChangeType() {
-		let res: Int = (LensTests.example, "Pepe")
-			|> update(_1()) { $0.count }
-			|> get(_1())
-		
-		XCTAssertEqual(res, 4)
+		XCTAssertEqual(
+			names.get(company),
+			[ "Mike", "Louis", "Jessica", "John", "Joe", "Mike" ]
+		)
 	}
 }
-

@@ -91,9 +91,12 @@ let people = Concat {
 	\Company.employees
 	\Company.freelance
 }
-//
-people.get(company)
-//
+
+people
+	.droppingFirst(1)
+	.get(company)
+
+
 //people.updateAll(&company) { person in
 //	person.name += person.name
 //}
