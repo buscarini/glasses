@@ -28,4 +28,10 @@ public struct Last<L: LensOptic, Element>: OptionalOptic where L.Part == [Elemen
 			elements[elements.endIndex.advanced(by: -1)] = last
 		}
 	}
+	
+	public func trySet(_ whole: inout Whole, newValue: Part) {
+		tryUpdate(&whole) { part in
+			part = newValue
+		}
+	}
 }

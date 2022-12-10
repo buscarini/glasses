@@ -42,4 +42,10 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 			elements[index] = item
 		}
 	}
+	
+	public func trySet(_ whole: inout Whole, newValue: Part) {
+		tryUpdate(&whole) { part in
+			part = newValue
+		}
+	}
 }

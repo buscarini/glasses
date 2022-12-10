@@ -28,4 +28,10 @@ public struct First<L: LensOptic, Element>: OptionalOptic where L.Part == [Eleme
 			elements[0] = first
 		}
 	}
+	
+	public func trySet(_ whole: inout Whole, newValue: Part) {
+		tryUpdate(&whole) { part in
+			part = newValue
+		}
+	}
 }

@@ -4,20 +4,22 @@ import XCTest
 
 class LensTests: XCTestCase {
 	func testLens() {
+		var local = company
+		
 		let ceoAge = Lens {
 			\Company.ceo
 			\Person.age
 		}
 		
 		XCTAssertEqual(
-			ceoAge.get(company),
+			ceoAge.get(local),
 			50
 		)
 		
-		ceoAge.update(&company, { $0 += 1 })
+		ceoAge.update(&local, { $0 += 1 })
 		
 		XCTAssertEqual(
-			ceoAge.get(company),
+			ceoAge.get(local),
 			51
 		)
 	}

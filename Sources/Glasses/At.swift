@@ -38,4 +38,10 @@ where L.Part == [Element] {
 			elements[self.index] = item
 		}
 	}
+	
+	public func trySet(_ whole: inout Whole, newValue: Part) {
+		tryUpdate(&whole) { part in
+			part = newValue
+		}
+	}
 }

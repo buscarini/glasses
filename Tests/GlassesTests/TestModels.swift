@@ -5,11 +5,30 @@ struct Person: Equatable {
 	var age: Int
 }
 
+enum Failable<T> {
+	case valid(T)
+	case invalid(Error)
+}
+
+extension Failable: Equatable where T: Equatable {
+	static func ==(left: Self, right: Self) -> Bool {
+		switch (left, right) {
+			case let (.valid(left), .valid(right)):
+				return left == right
+			case let (.invalid(left), .invalid(right)):
+				return (left as NSError) == (right as NSError)
+			default:
+				return false
+		}
+	}
+}
+
 struct Company: Equatable {
 	var employees: [Person]
 	var freelance: [Person]
 	var ceo: Person
 	var cto: Person
+	var advisor: Failable<Person>?
 }
 
 let john = Person(
@@ -42,7 +61,7 @@ let mike = Person(
 	age: 38
 )
 
-var company = Company(
+let company = Company(
 	employees: [ mike, louis, jessica ],
 	freelance: [ john, joe, mike ],
 	ceo: jessica,

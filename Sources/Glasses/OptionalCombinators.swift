@@ -22,4 +22,8 @@ public struct Optionally<Optics: OptionalOptic>: OptionalOptic {
 			f(&part)
 		}
 	}
+	
+	public func trySet(_ whole: inout Whole, newValue: Part) {
+		optics.trySet(&whole, newValue: newValue)
+	}
 }
