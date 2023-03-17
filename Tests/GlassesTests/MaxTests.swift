@@ -33,5 +33,12 @@ class MaxTests: XCTestCase {
 			oldestName.tryGet(local),
 			"LOUIS"
 		)
+		
+		oldest.trySet(&local, to: mike)
+		
+		XCTAssertEqual(
+			oldestName.tryGet(local),
+			"John"
+		)
 	}
 }

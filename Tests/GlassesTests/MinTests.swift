@@ -33,5 +33,12 @@ class MinTests: XCTestCase {
 			youngestName.tryGet(local),
 			"JOE"
 		)
+		
+		youngest.trySet(&local, to: louis)
+		
+		XCTAssertEqual(
+			youngestName.tryGet(local),
+			"Mike"
+		)
 	}
 }

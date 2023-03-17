@@ -12,7 +12,7 @@ where L.Part == [Element], SortPropertyOptic.Whole == Element, SortPropertyOptic
 	@inlinable
 	public init(
 		reversed: Bool = false,
-		@ConcatLensesBuilder with build: () -> L,
+		@ConcatLensesBuilder _ build: () -> L,
 		@LensBuilder by: () -> SortPropertyOptic
 	) {
 		self.reversed = reversed
