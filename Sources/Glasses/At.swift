@@ -39,7 +39,7 @@ where L.Part == [Element] {
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		tryUpdate(&whole) { part in
 			part = newValue
 		}

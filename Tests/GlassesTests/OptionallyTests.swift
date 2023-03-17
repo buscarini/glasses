@@ -22,18 +22,18 @@ class OptionallyTests: XCTestCase {
 		
 		XCTAssertNil(advisorName.tryGet(local))
 
-		advisorName.trySet(&local, newValue: "Joe")
+		advisorName.trySet(&local, to: "Joe")
 		
 		XCTAssertNil(advisorName.tryGet(local))
 		
-		advisor.trySet(&local, newValue: joe)
+		advisor.trySet(&local, to: joe)
 
 		XCTAssertEqual(
 			advisor.tryGet(local),
 			joe
 		)
 		
-		advisorName.trySet(&local, newValue: "John")
+		advisorName.trySet(&local, to: "John")
 		
 		XCTAssertEqual(
 			advisorName.tryGet(local),

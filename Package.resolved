@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Algebraic",
+        "repositoryURL": "https://github.com/buscarini/algebraic",
+        "state": {
+          "branch": null,
+          "revision": "9d5eb82d70e2dda3c173ada08475dfdeb2b33872",
+          "version": "0.2.3"
+        }
+      },
+      {
+        "package": "swift-case-paths",
+        "repositoryURL": "https://github.com/pointfreeco/swift-case-paths.git",
+        "state": {
+          "branch": null,
+          "revision": "bb436421f57269fbcfe7360735985321585a86e5",
+          "version": "0.10.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

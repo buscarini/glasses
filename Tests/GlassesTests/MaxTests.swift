@@ -19,5 +19,19 @@ class MaxTests: XCTestCase {
 			oldest.tryGet(company),
 			louis
 		)
+		
+		let oldestName = Optionally {
+			oldest
+			\Person.name
+		}
+		
+		var local = company
+		
+		oldestName.tryUpdate(&local) { $0 = $0.uppercased() }
+		
+		XCTAssertEqual(
+			oldestName.tryGet(local),
+			"LOUIS"
+		)
 	}
 }

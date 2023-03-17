@@ -25,12 +25,10 @@ where L.Part == [Element] {
 	
 	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
 		lens.update(&whole) { elements in
-			let before = elements
-			var copy = elements
-			f(&copy)
-			let updated = copy.dropFirst(self.count)
-			let notUpdated = before.prefix(self.count)
-			elements = Array(notUpdated + updated)
+			var toUpdate = Array(elements.dropFirst(self.count))
+			let notUpdated = elements.prefix(self.count)
+			f(&toUpdate)
+			elements = Array(notUpdated) + toUpdate
 		}
 	}
 }

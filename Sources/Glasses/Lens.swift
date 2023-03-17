@@ -17,10 +17,25 @@ public protocol Setter {
 public protocol LensOptic<Whole, Part>: Getter, Setter {}
 
 extension LensOptic {
-	public func `set`(_ whole: inout Whole, newValue: Part) {
+	public func `set`(_ whole: inout Whole, to newValue: Part) {
 		update(&whole) { part in
 			part = newValue
 		}
+	}
+	
+	public func setting(_ whole: Whole, to newValue: Part) -> Whole {
+		var copy = whole
+		self.set(&copy, to: newValue)
+		return copy
+	}
+	
+	public func updating(
+		_ whole: Whole,
+		_ f: @escaping (inout Part) -> Void
+	) -> Whole {
+		var copy = whole
+		self.update(&copy, f)
+		return copy
 	}
 }
 
@@ -40,3 +55,25 @@ extension WritableKeyPath: LensOptic {
 		whole[keyPath: self] = value
 	}
 }
+
+//
+//public struct DefaultLens<Whole, Part>: LensOptic {
+//	var _get: (Whole) -> Part
+//	var _update: (Whole, inout Part) -> Void
+//	
+//	init(
+//		get: @escaping (Whole) -> Part,
+//		update: @escaping (Whole, inout Part) -> Void
+//	) {
+//		self._get = get
+//		self._update = update
+//	}
+//	
+//	public func get(_ whole: Whole) -> Part {
+//		self._get(whole)
+//	}
+//	
+//	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
+//		self._update(&whole, f)
+//	}
+//}

@@ -43,7 +43,7 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		tryUpdate(&whole) { part in
 			part = newValue
 		}

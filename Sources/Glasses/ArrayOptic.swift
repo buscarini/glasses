@@ -11,10 +11,22 @@ public protocol ArrayOptic<Whole, Part> {
 }
 
 extension ArrayOptic {
-	public func setAll(_ whole: inout Whole, _ part: Part) -> Void {
+	public func setAll(_ whole: inout Whole, to part: Part) -> Void {
 		self.updateAll(&whole) { value in
 			value = part
 		}
+	}
+	
+	func updatingAll(_ whole: Whole, _ f: @escaping (inout Part) -> Void) -> Whole {
+		var copy = whole
+		self.updateAll(&copy, f)
+		return copy
+	}
+
+	public func settingAll(_ whole: Whole, to part: Part) -> Whole {
+		var copy = whole
+		self.setAll(&copy, to: part)
+		return copy
 	}
 }
 

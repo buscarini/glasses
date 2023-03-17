@@ -11,18 +11,30 @@ class EachTests: XCTestCase {
 
 		var uppercased = company
 		
-		let names = Each {
+		let namesExceptFirst = Each {
 			Lens {
 				people.droppingFirst(1)
 				\Person.name
 			}
 		}
 		
-		names.updateAll(&uppercased, { $0 = $0.uppercased() })
+		namesExceptFirst.updateAll(&uppercased, { $0 = $0.uppercased() })
+		
+		XCTAssertEqual(
+			namesExceptFirst.getAll(uppercased),
+			[ "LOUIS", "JESSICA", "JOHN", "JOE", "MIKE" ]
+		)
+		
+		let names = Each {
+			Lens {
+				people
+				\Person.name
+			}
+		}
 		
 		XCTAssertEqual(
 			names.getAll(uppercased),
-			[ "LOUIS", "JESSICA", "JOHN", "JOE", "MIKE" ]
+			[ "Mike", "LOUIS", "JESSICA", "JOHN", "JOE", "MIKE" ]
 		)
 	}
 }

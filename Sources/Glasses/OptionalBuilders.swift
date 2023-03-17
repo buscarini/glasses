@@ -48,8 +48,8 @@ public struct OptionalLiftOptic<O: LensOptic>: OptionalOptic {
 		lens.update(&whole, f)
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
-		lens.set(&whole, newValue: newValue)
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
+		lens.set(&whole, to: newValue)
 	}
 }
 
@@ -79,10 +79,10 @@ where LHS.Part == RHS.Whole {
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		var part = lhs.get(whole)
-		rhs.trySet(&part, newValue: newValue)
-		lhs.set(&whole, newValue: part)
+		rhs.trySet(&part, to: newValue)
+		lhs.set(&whole, to: part)
 	}
 }
 
@@ -141,10 +141,10 @@ where LHS.Part == RHS.Whole {
 	
 	public func trySet(
 		_ whole: inout LHS.Whole,
-		newValue: RHS.Part
+		to newValue: RHS.Part
 	) -> Void {
 		lhs.tryUpdate(&whole) { lhsPart in
-			rhs.trySet(&lhsPart, newValue: newValue)
+			rhs.trySet(&lhsPart, to: newValue)
 		}
 	}
 }

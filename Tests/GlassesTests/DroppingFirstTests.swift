@@ -29,5 +29,16 @@ class DroppingFirstTests: XCTestCase {
 				.get(company),
 			[ ]
 		)
+		
+		var updated = company
+		
+		people
+			.droppingFirst()
+			.set(&updated, to: [ john ])
+		
+		XCTAssertEqual(
+			updated.employees[1],
+			john
+		)
 	}
 }

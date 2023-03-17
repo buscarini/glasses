@@ -30,7 +30,7 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 			}
 
 			let indexedMax = zip(0..., elements).min { left, right in
-				self.by.get(left.1) < self.by.get(left.1)
+				self.by.get(left.1) < self.by.get(right.1)
 			}
 			
 			guard let index = indexedMax?.0 else {
@@ -42,7 +42,8 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 			elements[index] = first
 		}
 	}
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		tryUpdate(&whole) { part in
 			part = newValue
 		}

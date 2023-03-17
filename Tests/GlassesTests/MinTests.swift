@@ -9,15 +9,29 @@ class MinTests: XCTestCase {
 			\Company.freelance
 		}
 		
-		let oldest = Min {
+		let youngest = Min {
 			people
 		} by: {
 			\Person.age
 		}
 		
 		XCTAssertEqual(
-			oldest.tryGet(company),
+			youngest.tryGet(company),
 			joe
+		)
+		
+		let youngestName = Optionally {
+			youngest
+			\Person.name
+		}
+		
+		var local = company
+		
+		youngestName.tryUpdate(&local) { $0 = $0.uppercased() }
+		
+		XCTAssertEqual(
+			youngestName.tryGet(local),
+			"JOE"
 		)
 	}
 }

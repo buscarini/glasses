@@ -22,9 +22,23 @@ class LensTests: XCTestCase {
 			ceoAge.get(local),
 			51
 		)
+		
+		XCTAssertEqual(
+			ceoAge.get(
+				ceoAge.updating(local, { $0 += 1 })
+			),
+			52
+		)
+		
+		XCTAssertEqual(
+			ceoAge.get(
+				ceoAge.setting(local, to: 22)
+			),
+			22
+		)
 	}
 	
-	func testArrayProperty() {
+	func testConcat() {
 		let people = Concat {
 			\Company.employees
 			\Company.freelance

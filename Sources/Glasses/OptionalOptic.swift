@@ -9,7 +9,21 @@ public protocol OptionalOptic<Whole, Part> {
 	
 	func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) -> Void
 	
-	func trySet(_ whole: inout Whole, newValue: Part)
+	func trySet(_ whole: inout Whole, to: Part)
+}
+
+extension OptionalOptic {
+	public func trySetting(_ whole: Whole, to newValue: Part) -> Whole {
+		var copy = whole
+		self.trySet(&copy, to: newValue)
+		return copy
+	}
+	
+	func tryUpdating(_ whole: Whole, _ f: @escaping (inout Part) -> Void) -> Whole {
+		var copy = whole
+		self.tryUpdate(&copy, f)
+		return copy
+	}
 }
 
 //extension OptionalOptic {
@@ -63,7 +77,7 @@ public struct OptionalDefaultOptic<Wrapped>: OptionalOptic {
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		tryUpdate(&whole) { part in
 			part = newValue
 		}
@@ -100,7 +114,7 @@ public struct OptionalLiftPrismOptic<P: PrismOptic>: OptionalOptic {
 		whole = prism.embed(value)
 	}
 	
-	public func trySet(_ whole: inout Whole, newValue: Part) {
+	public func trySet(_ whole: inout Whole, to newValue: Part) {
 		whole = prism.embed(newValue)
 	}
 }
