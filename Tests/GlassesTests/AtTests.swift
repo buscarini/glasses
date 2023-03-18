@@ -4,32 +4,32 @@ import XCTest
 
 class AtTests: XCTestCase {
 	func testAt() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
+//			\Company.freelance
 		}
 		
-		let fourth = At(3) {
+		let person = At(2) {
 			people
 		}
 		
 		XCTAssertEqual(
-			fourth.tryGet(company),
-			john
+			person.tryGet(company),
+			jessica
 		)
 		
-		let fourthName = Optionally {
-			fourth
+		let personName = Optionally {
+			person
 			\Person.name
 		}
 		
 		var local = company
 		
-		fourthName.tryUpdate(&local) { $0 = $0.uppercased() }
+		personName.tryUpdate(&local) { $0 = $0.uppercased() }
 		
 		XCTAssertEqual(
-			fourthName.tryGet(local),
-			"JOHN"
+			personName.tryGet(local),
+			"JESSICA"
 		)
 	}
 }

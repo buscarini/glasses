@@ -1,7 +1,7 @@
 import Foundation
 
-public struct Sorted<L: LensOptic, SortPropertyOptic: LensOptic, Element>: LensOptic
-where L.Part == [Element], SortPropertyOptic.Whole == Element, SortPropertyOptic.Part: Comparable {
+public struct Sorted<L: LensOptic, SortPropertyOptic: LensOptic>: LensOptic
+where L.Part == [SortPropertyOptic.Whole], SortPropertyOptic.Part: Comparable {
 	public typealias Whole = L.Whole
 	public typealias Part = L.Part
 	
@@ -12,7 +12,7 @@ where L.Part == [Element], SortPropertyOptic.Whole == Element, SortPropertyOptic
 	@inlinable
 	public init(
 		reversed: Bool = false,
-		@ConcatLensesBuilder _ build: () -> L,
+		@LensBuilder _ build: () -> L,
 		@LensBuilder by: () -> SortPropertyOptic
 	) {
 		self.reversed = reversed

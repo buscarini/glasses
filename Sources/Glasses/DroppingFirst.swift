@@ -11,7 +11,7 @@ where L.Part == [Element] {
 	@inlinable
 	public init(
 		count: Int = 1,
-		@ConcatLensesBuilder with build: () -> L
+		@LensBuilder with build: () -> L
 	) {
 		self.count = count
 		self.lens = build()

@@ -4,9 +4,8 @@ import XCTest
 
 class SortedTests: XCTestCase {
 	func testSorted() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
 		}
 		
 		let byAge = Sorted {
@@ -22,11 +21,8 @@ class SortedTests: XCTestCase {
 		XCTAssertEqual(
 			peopleByAge,
 			[
-				joe,
-				mike,
 				mike,
 				jessica,
-				john,
 				louis
 			]
 		)
@@ -34,8 +30,6 @@ class SortedTests: XCTestCase {
 		let modified = byAge.setting(company, to: [
 			joe,
 			mike,
-			mike,
-			jessica,
 			jessica,
 			louis
 		])
@@ -45,32 +39,9 @@ class SortedTests: XCTestCase {
 			[
 				joe,
 				mike,
-				mike,
-				jessica,
 				jessica,
 				louis
 			]
 		)
-		
-//		let oldestName = Optionally {
-//			oldest
-//			\Person.name
-//		}
-//		
-//		var local = company
-//		
-//		oldestName.tryUpdate(&local) { $0 = $0.uppercased() }
-//		
-//		XCTAssertEqual(
-//			oldestName.tryGet(local),
-//			"LOUIS"
-//		)
-//		
-//		oldest.trySet(&local, to: mike)
-//		
-//		XCTAssertEqual(
-//			oldestName.tryGet(local),
-//			"John"
-//		)
 	}
 }

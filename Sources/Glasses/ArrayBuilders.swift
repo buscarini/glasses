@@ -22,28 +22,28 @@ import Foundation
 //	}
 //}
 //
-//public struct CombineArrayOptic<LHS: ArrayOptic, RHS: Lens>: ArrayOptic
-//where LHS.Part == RHS.Whole {
-//	let lhs: LHS
-//	let rhs: RHS
-//
-//	public typealias Whole = LHS.Whole
-//	public typealias Part = RHS.Part
-//
-//	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
-//		lhs.getAll(whole).map(rhs.get)
-//	}
-//
-//	public func updateAll(
-//		_ whole: inout LHS.Whole,
-//		_ f: @escaping (inout RHS.Part) -> Void
-//	) -> Void {
-//		lhs.updateAll(&whole) { lhsPart in
-//			rhs.update(&lhsPart, f)
-//		}
-//	}
-//}
-//
+public struct CombineArrayOptic<LHS: ArrayOptic, RHS: LensOptic>: ArrayOptic
+where LHS.Part == RHS.Whole {
+	let lhs: LHS
+	let rhs: RHS
+
+	public typealias Whole = LHS.Whole
+	public typealias Part = RHS.Part
+
+	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
+		lhs.getAll(whole).map(rhs.get)
+	}
+
+	public func updateAll(
+		_ whole: inout LHS.Whole,
+		_ f: @escaping (inout RHS.Part) -> Void
+	) -> Void {
+		lhs.updateAll(&whole) { lhsPart in
+			rhs.update(&lhsPart, f)
+		}
+	}
+}
+
 public struct ConcatArrayOptics<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
 where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
 	let lhs: LHS
@@ -99,49 +99,49 @@ where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
 //	}
 //}
 //
-//public struct CombineArrayOptional<LHS: ArrayOptic, RHS: OptionalOptic>: ArrayOptic
-//where LHS.Part == RHS.Whole {
-//	let lhs: LHS
-//	let rhs: RHS
+public struct CombineArrayOptional<LHS: ArrayOptic, RHS: OptionalOptic>: ArrayOptic
+where LHS.Part == RHS.Whole {
+	let lhs: LHS
+	let rhs: RHS
+
+	public typealias Whole = LHS.Whole
+	public typealias Part = RHS.Part
+
+	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
+		lhs.getAll(whole).compactMap(rhs.tryGet)
+	}
+
+	public func updateAll(
+		_ whole: inout LHS.Whole,
+		_ f: @escaping (inout RHS.Part) -> Void
+	) -> Void {
+		lhs.updateAll(&whole) { lhsPart in
+			rhs.tryUpdate(&lhsPart, f)
+		}
+	}
+}
 //
-//	public typealias Whole = LHS.Whole
-//	public typealias Part = RHS.Part
-//
-//	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
-//		lhs.getAll(whole).compactMap(rhs.tryGet)
-//	}
-//
-//	public func updateAll(
-//		_ whole: inout LHS.Whole,
-//		_ f: @escaping (inout RHS.Part) -> Void
-//	) -> Void {
-//		lhs.updateAll(&whole) { lhsPart in
-//			rhs.tryUpdate(&lhsPart, f)
-//		}
-//	}
-//}
-//
-//public struct CombineArrayArray<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
-//where LHS.Part == RHS.Whole {
-//	let lhs: LHS
-//	let rhs: RHS
-//
-//	public typealias Whole = LHS.Whole
-//	public typealias Part = RHS.Part
-//
-//	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
-//		lhs.getAll(whole).flatMap(rhs.getAll)
-//	}
-//
-//	public func updateAll(
-//		_ whole: inout LHS.Whole,
-//		_ f: @escaping (inout RHS.Part) -> Void
-//	) -> Void {
-//		lhs.updateAll(&whole) { lhsPart in
-//			rhs.updateAll(&lhsPart, f)
-//		}
-//	}
-//}
+public struct CombineArrayArray<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
+where LHS.Part == RHS.Whole {
+	let lhs: LHS
+	let rhs: RHS
+
+	public typealias Whole = LHS.Whole
+	public typealias Part = RHS.Part
+
+	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
+		lhs.getAll(whole).flatMap(rhs.getAll)
+	}
+
+	public func updateAll(
+		_ whole: inout LHS.Whole,
+		_ f: @escaping (inout RHS.Part) -> Void
+	) -> Void {
+		lhs.updateAll(&whole) { lhsPart in
+			rhs.updateAll(&lhsPart, f)
+		}
+	}
+}
 //
 //public struct ArrayLiftOptic<O: Lens>: ArrayOptic {
 //	let optic: O
@@ -184,13 +184,13 @@ where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
 //}
 //
 
-/*@resultBuilder
+@resultBuilder
 public enum ArrayOpticBuilder {
-	public static func buildPartialBlock<O: Lens>(first optic: O) -> ArrayLiftOptic<O> {
-		.init(optic: optic)
+	public static func buildPartialBlock<O: LensOptic>(first optic: O) -> ArrayLensLiftOptic<O> {
+		.init(lens: optic)
 	}
 
-	public static func buildPartialBlock<O: OptionalOptic>(first optic: O) -> ArrayLiftOptional<O> {
+	public static func buildPartialBlock<O: OptionalOptic>(first optic: O) -> ArrayOptionalLiftOptic<O> {
 		.init(optic: optic)
 	}
 
@@ -214,7 +214,7 @@ public enum ArrayOpticBuilder {
 //		CombineOpticArray(lhs: o0, rhs: o1)
 //	}
 
-	public static func buildPartialBlock<O0: ArrayOptic, O1: Lens>(accumulated o0: O0, next o1: O1) -> CombineArrayOptic<O0, O1> {
+	public static func buildPartialBlock<O0: ArrayOptic, O1: LensOptic>(accumulated o0: O0, next o1: O1) -> CombineArrayOptic<O0, O1> {
 		CombineArrayOptic(lhs: o0, rhs: o1)
 	}
 
@@ -338,6 +338,8 @@ public enum ArrayOpticBuilder {
 
 //
 
+ /*
+ 
 @resultBuilder
 public enum EachOpticBuilder {
 	public static func buildPartialBlock<O: Lens, Element>(first optic: O) -> ArrayLensLiftOptic<O, Element> {
@@ -366,7 +368,7 @@ public enum EachOpticBuilder {
 
 @resultBuilder
 public enum EachOpticBuilder {
-	public static func buildPartialBlock<O: LensOptic, Element>(first optic: O) -> ArrayLensLiftOptic<O, Element> {
+	public static func buildPartialBlock<O: LensOptic>(first optic: O) -> ArrayLensLiftOptic<O> {
 		.init(lens: optic)
 	}
 	
@@ -374,7 +376,7 @@ public enum EachOpticBuilder {
 		optic
 	}
 	
-	public static func buildPartialBlock<O0: LensOptic, O1: ArrayOptic, Element>(accumulated o0: O0, next o1: O1) -> ConcatArrayOptics<ArrayLensLiftOptic<O0, Element>, O1> {
+	public static func buildPartialBlock<O0: LensOptic, O1: ArrayOptic>(accumulated o0: O0, next o1: O1) -> ConcatArrayOptics<ArrayLensLiftOptic<O0>, O1> {
 		ConcatArrayOptics(lhs: ArrayLensLiftOptic(lens: o0), rhs: o1)
 	}
 	

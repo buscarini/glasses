@@ -64,39 +64,38 @@ public struct DictionaryValuesOptic<Key: Hashable, Value>: ArrayOptic {
 	}
 }
 
-extension Array {
-	public static func optic() -> ArrayDefaultOptic<Element> {
-		.init()
-	}
-}
-
-extension Dictionary {
-	public static func valuesOptic() -> DictionaryValuesOptic<Key, Value> {
-		.init()
-	}
-}
-
-public struct ArrayLensLiftOptic<O: LensOptic, Element>: ArrayOptic
-where O.Part == [Element] {
+public struct ArrayLensLiftOptic<O: LensOptic>: ArrayOptic {
 	let lens: O
 	
 	public typealias Whole = O.Whole
-	public typealias Part = Element
+	public typealias Part = O.Part
 	
 	public func getAll(_ whole: Whole) -> [Part] {
-		lens.get(whole)
+		[lens.get(whole)]
 	}
 	
 	public func updateAll(
 		_ whole: inout Whole,
 		_ f: @escaping (inout Part) -> Void
 	) -> Void {
-		lens.update(&whole) { elements in
-			elements = elements.map { element in
-				var copy = element
-				f(&copy)
-				return copy
-			}
-		}
+		lens.update(&whole, f)
+	}
+}
+
+public struct ArrayOptionalLiftOptic<O: OptionalOptic>: ArrayOptic {
+	let optic: O
+	
+	public typealias Whole = O.Whole
+	public typealias Part = O.Part
+	
+	public func getAll(_ whole: Whole) -> [Part] {
+		[optic.tryGet(whole)].compactMap { $0 }
+	}
+	
+	public func updateAll(
+		_ whole: inout Whole,
+		_ f: @escaping (inout Part) -> Void
+	) -> Void {
+		optic.tryUpdate(&whole, f)
 	}
 }

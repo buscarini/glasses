@@ -1,23 +1,23 @@
 import Foundation
 
-public struct Prism<Optics: PrismOptic>: PrismOptic {
-	public typealias Whole = Optics.Whole
-	public typealias Part = Optics.Part
+public struct Prism<P: PrismOptic>: PrismOptic {
+	public typealias Whole = P.Whole
+	public typealias Part = P.Part
 	
-	public let optics: Optics
+	public let optics: P
 	
 	@inlinable
 	public init(
-		@PrismBuilder with build: () -> Optics
+		@PrismBuilder with build: () -> P
 	) {
 		self.optics = build()
 	}
 	
-	public func extract(from whole: Optics.Whole) -> Optics.Part? {
+	public func extract(from whole: P.Whole) -> P.Part? {
 		self.optics.extract(from: whole)
 	}
 	
-	public func embed(_ part: Optics.Part) -> Optics.Whole {
+	public func embed(_ part: P.Part) -> P.Whole {
 		self.optics.embed(part)
 	}
 }

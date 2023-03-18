@@ -4,9 +4,9 @@ import Glasses
 
 class EachTests: XCTestCase {
 	func testEach() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
+//			\Company.freelance
 		}
 
 		var uppercased = company
@@ -22,7 +22,7 @@ class EachTests: XCTestCase {
 		
 		XCTAssertEqual(
 			namesExceptFirst.getAll(uppercased),
-			[ "LOUIS", "JESSICA", "JOHN", "JOE", "MIKE" ]
+			[ "LOUIS", "JESSICA" ]
 		)
 		
 		let names = Each {
@@ -34,7 +34,7 @@ class EachTests: XCTestCase {
 		
 		XCTAssertEqual(
 			names.getAll(uppercased),
-			[ "Mike", "LOUIS", "JESSICA", "JOHN", "JOE", "MIKE" ]
+			[ "Mike", "LOUIS", "JESSICA" ]
 		)
 	}
 }

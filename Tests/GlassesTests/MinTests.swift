@@ -4,9 +4,9 @@ import XCTest
 
 class MinTests: XCTestCase {
 	func testMin() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
+//			\Company.freelance
 		}
 		
 		let youngest = Min {
@@ -17,7 +17,7 @@ class MinTests: XCTestCase {
 		
 		XCTAssertEqual(
 			youngest.tryGet(company),
-			joe
+			mike
 		)
 		
 		let youngestName = Optionally {
@@ -31,14 +31,14 @@ class MinTests: XCTestCase {
 		
 		XCTAssertEqual(
 			youngestName.tryGet(local),
-			"JOE"
+			"MIKE"
 		)
 		
 		youngest.trySet(&local, to: louis)
 		
 		XCTAssertEqual(
 			youngestName.tryGet(local),
-			"Mike"
+			"Jessica"
 		)
 	}
 }

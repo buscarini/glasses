@@ -84,12 +84,6 @@ public struct OptionalDefaultOptic<Wrapped>: OptionalOptic {
 	}
 }
 
-extension Optional {
-	public static func optic() -> OptionalDefaultOptic<Wrapped> {
-		.init()
-	}
-}
-
 public struct OptionalLiftPrismOptic<P: PrismOptic>: OptionalOptic {
 	public typealias Whole = P.Whole
 	public typealias Part = P.Part

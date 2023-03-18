@@ -4,9 +4,8 @@ import XCTest
 
 class MaxTests: XCTestCase {
 	func testMax() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
 		}
 		
 		let oldest = Max {
@@ -38,7 +37,7 @@ class MaxTests: XCTestCase {
 		
 		XCTAssertEqual(
 			oldestName.tryGet(local),
-			"John"
+			"Jessica"
 		)
 	}
 }

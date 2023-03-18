@@ -40,21 +40,25 @@ class LensTests: XCTestCase {
 	
 	func testConcat() {
 		let people = Concat {
-			\Company.employees
-			\Company.freelance
+			Each {
+				\Company.employees
+			}
+			Each {
+				\Company.freelance
+			}
 		}
 
-		let names = Lens {
+		let names = Many {
 			people
 			\Person.name
 		}
 
 		dump(
-			names.get(company)
+			names.getAll(company)
 		)
 		
 		XCTAssertEqual(
-			names.get(company),
+			names.getAll(company),
 			[ "Mike", "Louis", "Jessica", "John", "Joe", "Mike" ]
 		)
 	}

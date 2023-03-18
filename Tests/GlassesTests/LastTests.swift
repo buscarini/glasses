@@ -4,9 +4,8 @@ import XCTest
 
 class LastTests: XCTestCase {
 	func testLast() {
-		let people = Concat {
+		let people = Lens {
 			\Company.freelance
-			\Company.employees
 		}
 		
 		let last = Last {
@@ -15,7 +14,7 @@ class LastTests: XCTestCase {
 		
 		XCTAssertEqual(
 			last.tryGet(company),
-			jessica
+			mike
 		)
 		
 		let lastName = Optionally {
@@ -29,7 +28,7 @@ class LastTests: XCTestCase {
 		
 		XCTAssertEqual(
 			lastName.tryGet(local),
-			"JESSICA"
+			"MIKE"
 		)
 	}
 }

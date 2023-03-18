@@ -4,23 +4,22 @@ import Glasses
 
 class DroppingFirstTests: XCTestCase {
 	func testDroppingFirst() {
-		let people = Concat {
-			\Company.employees
-			\Company.freelance
+		let people = Lens {
+				\Company.employees
 		}
 		
 		XCTAssertEqual(
 			people
 				.droppingFirst(1)
 				.get(company),
-			[ louis, jessica, john, joe, mike ]
+			[ louis, jessica ]
 		)
 		
 		XCTAssertEqual(
 			people
-				.droppingFirst(5)
+				.droppingFirst(2)
 				.get(company),
-			[ mike ]
+			[ jessica ]
 		)
 		
 		XCTAssertEqual(

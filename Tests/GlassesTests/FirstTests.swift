@@ -4,9 +4,9 @@ import XCTest
 
 class FirstTests: XCTestCase {
 	func testFirst() {
-		let people = Concat {
+		let people = Lens {
 			\Company.employees
-			\Company.freelance
+//			\Company.freelance
 		}
 		
 		let first = First {
