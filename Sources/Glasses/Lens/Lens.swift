@@ -55,25 +55,3 @@ extension WritableKeyPath: LensOptic {
 		whole[keyPath: self] = value
 	}
 }
-
-//
-//public struct DefaultLens<Whole, Part>: LensOptic {
-//	var _get: (Whole) -> Part
-//	var _update: (Whole, inout Part) -> Void
-//	
-//	init(
-//		get: @escaping (Whole) -> Part,
-//		update: @escaping (Whole, inout Part) -> Void
-//	) {
-//		self._get = get
-//		self._update = update
-//	}
-//	
-//	public func get(_ whole: Whole) -> Part {
-//		self._get(whole)
-//	}
-//	
-//	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-//		self._update(&whole, f)
-//	}
-//}

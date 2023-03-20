@@ -30,6 +30,16 @@ extension ArrayOptic {
 	}
 }
 
+extension ArrayOptic {
+	func map<NewPart>(
+		from: @escaping (NewPart) -> Part,
+		to: @escaping (Part) -> NewPart
+	) {
+		
+		
+	}
+}
+
 public struct ArrayDefaultOptic<Element>: ArrayOptic {
 	public typealias Whole = Array<Element>
 	public typealias Part = Element
