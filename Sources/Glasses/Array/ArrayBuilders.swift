@@ -22,30 +22,33 @@ import Foundation
 //	}
 //}
 //
+
 public struct CombineArrayOptic<LHS: ArrayOptic, RHS: LensOptic>: ArrayOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 
 	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
 		lhs.getAll(whole).map(rhs.get)
 	}
 
 	public func updateAll(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.updateAll(&whole) { lhsPart in
-			rhs.update(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.updateAll(whole) { lhsPart in
+			rhs.update(lhsPart, f)
 		}
 	}
 }
 
 public struct ConcatArrayOptics<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
-where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
+where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part, LHS.NewPart == RHS.NewPart, LHS.NewWhole == RHS.NewWhole, LHS.NewWhole == LHS.Whole {
 	let lhs: LHS
 	let rhs: RHS
 
@@ -59,17 +62,19 @@ where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
 
 	public typealias Whole = LHS.Whole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
+	public typealias NewWhole = RHS.NewWhole
 
 	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
 		lhs.getAll(whole) + rhs.getAll(whole)
 	}
 
 	public func updateAll(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.updateAll(&whole, f)
-		rhs.updateAll(&whole, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		let updated = lhs.updateAll(whole, f)
+		return rhs.updateAll(updated, f)
 	}
 }
 //
@@ -100,45 +105,49 @@ where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
 //}
 //
 public struct CombineArrayOptional<LHS: ArrayOptic, RHS: OptionalOptic>: ArrayOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 
 	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
 		lhs.getAll(whole).compactMap(rhs.tryGet)
 	}
 
 	public func updateAll(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.updateAll(&whole) { lhsPart in
-			rhs.tryUpdate(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.updateAll(whole) { lhsPart in
+			rhs.tryUpdate(lhsPart, f)
 		}
 	}
 }
 //
 public struct CombineArrayArray<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 
 	public func getAll(_ whole: LHS.Whole) -> [RHS.Part] {
 		lhs.getAll(whole).flatMap(rhs.getAll)
 	}
 
 	public func updateAll(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.updateAll(&whole) { lhsPart in
-			rhs.updateAll(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.updateAll(whole) { lhsPart in
+			rhs.updateAll(lhsPart, f)
 		}
 	}
 }

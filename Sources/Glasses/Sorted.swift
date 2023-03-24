@@ -1,9 +1,11 @@
 import Foundation
 
-public struct Sorted<L: LensOptic, SortPropertyOptic: LensOptic>: LensOptic
-where L.Part == [SortPropertyOptic.Whole], SortPropertyOptic.Part: Comparable {
+public struct Sorted<L: LensOptic, SortPropertyOptic: LensOptic, NewElement>: LensOptic
+where L.Part == [SortPropertyOptic.Whole], SortPropertyOptic.Part: Comparable, L.NewPart == [NewElement] {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = L.Part
+	public typealias NewPart = L.NewPart
 	
 	public let reversed: Bool
 	public let lens: L
@@ -27,14 +29,24 @@ where L.Part == [SortPropertyOptic.Whole], SortPropertyOptic.Part: Comparable {
 		}
 	}
 	
-	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { elements in
-			elements.updateInPlace(update: f) { indexed in
-				indexed = indexed.sorted { left, right in
-					let result = self.by.get(left.1) < self.by.get(right.1)
-					return self.reversed ? !result : result
-				}
+	public func update(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole) { (parts: Part) -> NewPart in
+			let sortedIndexed = parts.enumerated().sorted {
+				self.by.get($0.1) < self.by.get($1.1)
 			}
+			
+			let indices = sortedIndexed.map { index, _ in index }
+			let updated = f(sortedIndexed.map { _, item in item })
+			
+			let updatedOriginalSortingTrimmed = zip(indices, updated)
+				.sorted(by: { $0.0 < $1.0 }).map { $0.1 }
+			
+			let extra = updated.suffix(updated.count - indices.count)
+			
+			return Array(updatedOriginalSortingTrimmed + extra)
 		}
 	}
 }

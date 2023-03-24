@@ -26,7 +26,7 @@ class MaxTests: XCTestCase {
 		
 		var local = company
 		
-		oldestName.tryUpdate(&local) { $0 = $0.uppercased() }
+		local = oldestName.tryUpdate(local) { $0.uppercased() }
 		
 		XCTAssertEqual(
 			oldestName.tryGet(local),

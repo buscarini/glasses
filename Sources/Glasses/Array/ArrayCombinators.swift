@@ -2,32 +2,28 @@ import Foundation
 
 public struct Many<Optics: ArrayOptic>: ArrayOptic {
 	public typealias Whole = Optics.Whole
+	public typealias NewWhole = Optics.NewWhole
 	public typealias Part = Optics.Part
+	public typealias NewPart = Optics.NewPart
 	
 	public let optics: Optics
-	public let filter: (Part) -> Bool
 	
 	@inlinable
 	public init(
-		@ArrayOpticBuilder with build: () -> Optics,
-		where filter: @escaping (Part) -> Bool = { _ in true }
+		@ArrayOpticBuilder with build: () -> Optics
 	) {
 		self.optics = build()
-		self.filter = filter
 	}
 	
 	public func getAll(_ whole: Whole) -> [Part] {
-		optics.getAll(whole).filter(self.filter)
+		optics.getAll(whole)
 	}
 	
-	public func updateAll(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		optics.updateAll(&whole) { part in
-			guard self.filter(part) else {
-				return
-			}
-			
-			f(&part)
-		}
+	public func updateAll(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		optics.updateAll(whole, f)
 	}
 }
 

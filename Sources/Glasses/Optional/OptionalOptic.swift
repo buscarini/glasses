@@ -1,92 +1,98 @@
 import Foundation
-//import CasePaths
 
 public protocol OptionalOptic<Whole, Part> {
 	associatedtype Whole
+	associatedtype NewWhole
 	associatedtype Part
+	associatedtype NewPart
 		
 	func tryGet(_ whole: Whole) -> Part?
 	
-	func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) -> Void
+	func tryUpdate(_ whole: Whole, _ f: @escaping (Part) -> NewPart) -> NewWhole
 	
-	func trySet(_ whole: inout Whole, to: Part)
+	func trySet(_ whole: Whole, to: NewPart) -> NewWhole
 }
 
-extension OptionalOptic {
-	public func trySetting(_ whole: Whole, to newValue: Part) -> Whole {
+extension OptionalOptic where Part == NewPart, Whole == NewWhole {
+	public func tryUpdate(
+		_ whole: inout Whole,
+		_ f: @escaping (inout Part) -> Void
+	) -> Void {
+		whole = self.tryUpdate(whole, { part in
+			var copy = part
+			f(&copy)
+			return copy
+		})
+	}
+	
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (inout Part) -> Void
+	) -> Whole {
+		self.tryUpdate(whole) { part in
+			var result = part
+			f(&result)
+			return result
+		}
+	}
+	
+	public func tryUpdate(
+		_ whole: inout Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> Void {
+		self.tryUpdate(&whole) { part in
+			part = f(part)
+		}
+	}
+	
+	public func trySet(_ whole: inout Whole, to newPart: NewPart) {
+		whole = self.trySet(whole, to: newPart)
+	}
+	
+	public func trySetting(_ whole: Whole, to newValue: NewPart) -> Whole {
 		var copy = whole
 		self.trySet(&copy, to: newValue)
 		return copy
 	}
-	
-	func tryUpdating(_ whole: Whole, _ f: @escaping (inout Part) -> Void) -> Whole {
-		var copy = whole
-		self.tryUpdate(&copy, f)
-		return copy
-	}
 }
 
-//extension OptionalOptic {
-//	public func trySet(_ whole: inout Whole, newValue: Part) {
-//		tryUpdate(&whole) { part in
-//			part = newValue
-//		}
-//	}
-//}
-
-
-//extension CasePath: OptionalOptic {
-//	public typealias Whole = Root
-//	public typealias Part = Value
-//
-//	public func tryGet(_ whole: Whole) -> Part? {
-//		self.extract(from: whole)
-//	}
-//
-//	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-////		try? self.modify(&whole, f)
-//		guard var value = self.extract(from: whole) else {
-//			return
-//		}
-//
-//		f(&value)
-//
-//		whole = self.embed(value)
-//	}
-//
-//	public func trySet(_ whole: inout Whole, newValue: Part) {
-//		whole = self.embed(newValue)
-//	}
-//}
-
-public struct OptionalDefaultOptic<Wrapped>: OptionalOptic {
+public struct OptionalDefaultOptic<Wrapped, NewWrapped>: OptionalOptic {
 	public typealias Whole = Optional<Wrapped>
+	public typealias NewWhole = Optional<NewWrapped>
 	public typealias Part = Wrapped
+	public typealias NewPart = NewWrapped
 
 	public func tryGet(_ whole: Whole) -> Part? {
 		whole
 	}
 
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
 		switch whole {
-			case var .some(value):
-				f(&value)
-				whole = .some(value)
+			case let .some(value):
+				return .some(f(value))
 			case .none:
-				break
+				return .none
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		tryUpdate(&whole) { part in
-			part = newValue
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
 		}
 	}
 }
 
 public struct OptionalLiftPrismOptic<P: PrismOptic>: OptionalOptic {
 	public typealias Whole = P.Whole
+	public typealias NewWhole = Whole
 	public typealias Part = P.Part
+	public typealias NewPart = Part
 	
 	public let prism: P
 	
@@ -98,17 +104,20 @@ public struct OptionalLiftPrismOptic<P: PrismOptic>: OptionalOptic {
 		prism.extract(from: whole)
 	}
 	
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
+	public func tryUpdate(_ whole: Whole, _ f: @escaping (Part) -> NewPart) -> NewWhole {
 		guard var value = prism.extract(from: whole) else {
-			return
+			return whole
 		}
 		
-		f(&value)
+		value = f(value)
 		
-		whole = prism.embed(value)
+		return prism.embed(value)
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		whole = prism.embed(newValue)
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		prism.embed(newValue)
 	}
 }

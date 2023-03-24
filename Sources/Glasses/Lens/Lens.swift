@@ -9,15 +9,33 @@ public protocol Getter {
 
 public protocol Setter {
 	associatedtype Whole
+	associatedtype NewWhole
 	associatedtype Part
+	associatedtype NewPart
 	
-	func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) -> Void
+	func update(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole
+}
+
+extension Setter where NewWhole == Whole, NewPart == Part {
+	public func update(
+		_ whole: inout Whole,
+		_ f: @escaping (inout Part) -> Void
+	) -> Void {
+		whole = self.update(whole) { part in
+			var copy = part
+			f(&copy)
+			return copy
+		}
+	}
 }
 
 public protocol LensOptic<Whole, Part>: Getter, Setter {}
 
-extension LensOptic {
-	public func `set`(_ whole: inout Whole, to newValue: Part) {
+extension LensOptic where NewWhole == Whole, NewPart == Part {
+	public func `set`(_ whole: inout Whole, to newValue: NewPart) {
 		update(&whole) { part in
 			part = newValue
 		}
@@ -46,12 +64,15 @@ extension KeyPath: Getter {
 }
 
 extension WritableKeyPath: LensOptic {
+	public typealias NewWhole = Root
+	public typealias NewPart = Value
+	
 	public func update(
-		_ whole: inout Root,
-		_ f: @escaping (inout Value) -> Void
-	) {
-		var value = whole[keyPath: self]
-		f(&value)
-		whole[keyPath: self] = value
+		_ whole: Root,
+		_ f: @escaping (Value) -> Value
+	) -> Root {
+		var result = whole
+		result[keyPath: self] = f(result[keyPath: self])
+		return result
 	}
 }

@@ -1,9 +1,11 @@
 import Foundation
 
 public struct DroppingFirst<L: LensOptic, Element>: LensOptic
-where L.Part == [Element] {
+where L.Part == [Element], L.NewWhole == L.Whole, L.NewPart == L.Part {
 	public typealias Whole = L.Whole
 	public typealias Part = L.Part
+	public typealias NewPart = L.Part
+	public typealias NewWhole = L.Whole
 	
 	public var count: Int
 	public var lens: L
@@ -23,12 +25,12 @@ where L.Part == [Element] {
 		)
 	}
 	
-	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { elements in
+	public func update(_ whole: Whole, _ f: @escaping (Part) -> NewPart) -> NewWhole {
+		lens.update(whole) { elements in
 			var toUpdate = Array(elements.dropFirst(self.count))
 			let notUpdated = elements.prefix(self.count)
-			f(&toUpdate)
-			elements = Array(notUpdated) + toUpdate
+			toUpdate = f(toUpdate)
+			return Array(notUpdated) + toUpdate
 		}
 	}
 }

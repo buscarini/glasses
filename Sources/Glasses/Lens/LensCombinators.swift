@@ -2,7 +2,9 @@ import Foundation
 
 public struct Optic<Optics: LensOptic>: LensOptic {
 	public typealias Whole = Optics.Whole
+	public typealias NewWhole = Optics.NewWhole
 	public typealias Part = Optics.Part
+	public typealias NewPart = Optics.NewPart
 	
 	public let optics: Optics
 	
@@ -17,81 +19,60 @@ public struct Optic<Optics: LensOptic>: LensOptic {
 		optics.get(whole)
 	}
 	
-	public func update(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		optics.update(&whole) { part in
-			f(&part)
-		}
+	public func update(_ whole: Whole, _ f: @escaping (Part) -> NewPart) -> NewWhole {
+		optics.update(whole, f)
 	}
 }
 
 
 public struct LensCombination<LHS: LensOptic, RHS: LensOptic>: LensOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 	
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 	
 	public func get(_ whole: LHS.Whole) -> RHS.Part {
 		rhs.get(lhs.get(whole))
 	}
 	
 	public func update(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.update(&whole) { lhsPart in
-			rhs.update(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.update(whole) { lhsPart in
+			rhs.update(lhsPart, f)
 		}
 	}
 }
 
 public struct LensEachCombinator<LHS: LensOptic, RHS: LensOptic>: LensOptic
-where LHS.Part == [RHS.Whole] {
+where LHS.Part == [RHS.Whole], LHS.NewPart == [RHS.NewWhole] {
 	let lhs: LHS
 	let rhs: RHS
 	
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = [RHS.Part]
+	public typealias NewPart = [RHS.NewPart]
 	
 	public func get(_ whole: LHS.Whole) -> [RHS.Part] {
 		lhs.get(whole).map(rhs.get)
 	}
 	
 	public func update(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout [RHS.Part]) -> Void
-	) -> Void {
-		lhs.update(&whole) { rhsWholes in
-			var rhsParts = rhsWholes.map(rhs.get)
-			f(&rhsParts)
-			rhsWholes = zip(rhsWholes, rhsParts).map { (whole, part) in
-				var result = whole
-				rhs.update(&result, { $0 = part })
-				return result
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.update(whole) { rhsWholes in
+			let rhsParts: [RHS.NewPart] = f(rhsWholes.map(rhs.get))
+			
+			return zip(rhsWholes, rhsParts).map { whole, newPart in
+				rhs.update(whole, { _ in newPart })
 			}
-
-			
-//			rhsWholes.updateInPlace { elements in
-//
-////				var rhsParts = elements.map(rhs.get)
-////				f(&rhsParts)
-//
-//			} prepare: { _ in
-//
-//			}
-
-			
-		
-//			rhs.update(&lhsPart) {
-				
-//			}
-//			lhsPart = lhsPart.map { part in
-//				var copy = part
-//				rhs.update(&copy, f)
-//				return copy
-//			}
 		}
 	}
 }

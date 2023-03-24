@@ -25,7 +25,9 @@ extension LensOptic {
 
 public struct Lens<L: LensOptic>: LensOptic {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = L.Part
+	public typealias NewPart = L.NewPart
 	
 	public let lens: L
 	
@@ -40,8 +42,8 @@ public struct Lens<L: LensOptic>: LensOptic {
 		lens.get(whole)
 	}
 	
-	public func update(_ whole: inout L.Whole, _ f: @escaping (inout L.Part) -> Void) {
-		lens.update(&whole, f)
+	public func update(_ whole: L.Whole, _ f: @escaping (L.Part) -> L.NewPart) -> L.NewWhole {
+		lens.update(whole, f)
 	}
 }
 

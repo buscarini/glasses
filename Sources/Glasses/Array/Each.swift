@@ -1,8 +1,11 @@
 import Foundation
 
-public struct Each<L: LensOptic, Element>: ArrayOptic where L.Part == [Element] {
+public struct Each<L: LensOptic, Element, NewElement>: ArrayOptic
+where L.Part == [Element], L.NewPart == [NewElement] {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = Element
+	public typealias NewPart = NewElement
 	
 	public let lens: L
 	
@@ -17,13 +20,12 @@ public struct Each<L: LensOptic, Element>: ArrayOptic where L.Part == [Element] 
 		lens.get(whole)
 	}
 	
-	public func updateAll(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { parts in
-			parts = parts.map {
-				var copy = $0
-				f(&copy)
-				return copy
-			}
+	public func updateAll(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole) { parts in
+			parts.map(f)
 		}
 	}
 }

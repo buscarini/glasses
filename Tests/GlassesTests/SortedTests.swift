@@ -3,6 +3,8 @@ import Glasses
 import XCTest
 
 class SortedTests: XCTestCase {
+	
+//	mike, louis, jessica
 	func testSorted() {
 		let people = Lens {
 			\Company.employees
@@ -41,6 +43,16 @@ class SortedTests: XCTestCase {
 				mike,
 				jessica,
 				louis
+			]
+		)
+		
+		XCTAssertEqual(
+			modified.employees,
+			[
+				joe,
+				louis,
+				jessica,
+				mike
 			]
 		)
 	}

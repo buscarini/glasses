@@ -31,7 +31,9 @@ public struct OptionalLiftOptic<O: LensOptic>: OptionalOptic {
 	let lens: O
 	
 	public typealias Whole = O.Whole
+	public typealias NewWhole = O.NewWhole
 	public typealias Part = O.Part
+	public typealias NewPart = O.NewPart
 	
 	public init(optic: O) {
 		self.lens = optic
@@ -42,24 +44,31 @@ public struct OptionalLiftOptic<O: LensOptic>: OptionalOptic {
 	}
 	
 	public func tryUpdate(
-		_ whole: inout O.Whole,
-		_ f: @escaping (inout O.Part) -> Void
-	) -> Void {
-		lens.update(&whole, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole, f)
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		lens.set(&whole, to: newValue)
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
+		}
 	}
 }
 
 public struct CombineLensOptional<LHS: LensOptic, RHS: OptionalOptic>: OptionalOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 	
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 	
 	public init(lhs: LHS, rhs: RHS) {
 		self.lhs = lhs
@@ -71,18 +80,21 @@ where LHS.Part == RHS.Whole {
 	}
 	
 	public func tryUpdate(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.update(&whole) { lhsPart in
-			rhs.tryUpdate(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.update(whole) { lhsPart in
+			rhs.tryUpdate(lhsPart, f)
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		var part = lhs.get(whole)
-		rhs.trySet(&part, to: newValue)
-		lhs.set(&whole, to: part)
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
+		}
 	}
 }
 
@@ -114,12 +126,14 @@ where LHS.Part == RHS.Whole {
 //}
 
 public struct CombineOptionals<LHS: OptionalOptic, RHS: OptionalOptic>: OptionalOptic
-where LHS.Part == RHS.Whole {
+where LHS.Part == RHS.Whole, LHS.NewPart == RHS.NewWhole {
 	let lhs: LHS
 	let rhs: RHS
 	
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = RHS.Part
+	public typealias NewPart = RHS.NewPart
 	
 	public init(lhs: LHS, rhs: RHS) {
 		self.lhs = lhs
@@ -131,20 +145,29 @@ where LHS.Part == RHS.Whole {
 	}
 	
 	public func tryUpdate(
-		_ whole: inout LHS.Whole,
-		_ f: @escaping (inout RHS.Part) -> Void
-	) -> Void {
-		lhs.tryUpdate(&whole) { lhsPart in
-			rhs.tryUpdate(&lhsPart, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lhs.tryUpdate(whole) { lhsPart in
+			rhs.tryUpdate(lhsPart, f)
 		}
 	}
 	
 	public func trySet(
-		_ whole: inout LHS.Whole,
-		to newValue: RHS.Part
-	) -> Void {
-		lhs.tryUpdate(&whole) { lhsPart in
-			rhs.trySet(&lhsPart, to: newValue)
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		lhs.tryUpdate(whole) { part in
+			rhs.trySet(part, to: newValue)
 		}
 	}
+	
+//	public func trySet(
+//		_ whole: inout LHS.Whole,
+//		to newValue: RHS.NewPart
+//	) -> Void {
+//		lhs.tryUpdate(&whole) { lhsPart in
+//			rhs.trySet(&lhsPart, to: newValue)
+//		}
+//	}
 }

@@ -1,9 +1,11 @@
 import Foundation
 
 public struct Max<L: LensOptic, Sorted: LensOptic, Element>: OptionalOptic
-where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
+where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable, L.NewPart == L.Part, L.NewWhole == L.Whole {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = Element
+	public typealias NewPart = Part
 	
 	public let lens: L
 	public let by: Sorted
@@ -23,10 +25,13 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 		}
 	}
 	
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { elements in
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole) { elements in
 			guard elements.count > 0 else {
-				return
+				return elements
 			}
 
 			let indexedMax = zip(0..., elements).max { left, right in
@@ -34,18 +39,21 @@ where L.Part == [Element], Sorted.Whole == Element, Sorted.Part: Comparable {
 			}
 			
 			guard let index = indexedMax?.0 else {
-				return
+				return elements
 			}
 			
-			var item = elements[index]
-			f(&item)
-			elements[index] = item
+			var result = elements
+			result[index] = f(result[index])
+			return result
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		tryUpdate(&whole) { part in
-			part = newValue
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
 		}
 	}
 }

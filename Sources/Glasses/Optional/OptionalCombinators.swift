@@ -2,7 +2,9 @@ import Foundation
 
 public struct Optionally<Optics: OptionalOptic>: OptionalOptic {
 	public typealias Whole = Optics.Whole
+	public typealias NewWhole = Optics.NewWhole
 	public typealias Part = Optics.Part
+	public typealias NewPart = Optics.NewPart
 	
 	public let optics: Optics
 	
@@ -17,13 +19,14 @@ public struct Optionally<Optics: OptionalOptic>: OptionalOptic {
 		optics.tryGet(whole)
 	}
 	
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		optics.tryUpdate(&whole) { part in
-			f(&part)
-		}
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		optics.tryUpdate(whole, f)
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		optics.trySet(&whole, to: newValue)
+	public func trySet(_ whole: Whole, to newValue: NewPart) -> NewWhole {
+		optics.trySet(whole, to: newValue)
 	}
 }

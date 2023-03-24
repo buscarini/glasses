@@ -2,53 +2,52 @@ import Foundation
 
 public struct Concat<Optics: ArrayOptic>: ArrayOptic {
 	public typealias Whole = Optics.Whole
+	public typealias NewWhole = Optics.NewWhole
 	public typealias Part = Optics.Part
+	public typealias NewPart = Optics.NewPart
 	
 	public let lens: Optics
-	public let filter: (Part) -> Bool
 	
 	@inlinable
 	public init(
-		@ConcatLensesBuilder with build: () -> Optics,
-		where filter: @escaping (Part) -> Bool = { _ in true }
+		@ConcatLensesBuilder with build: () -> Optics
 	) {
 		self.lens = build()
-		self.filter = filter
 	}
 	
 	public func getAll(_ whole: Whole) -> [Part] {
-		lens.getAll(whole).filter(self.filter)
+		lens.getAll(whole)
 	}
 	
-	public func updateAll(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.updateAll(&whole) { element in
-			guard self.filter(element) else {
-				return
-			}
-			
-			f(&element)
-		}
+	public func updateAll(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.updateAll(whole, f)
 	}
 }
 
 public struct ConcatLenses<LHS: ArrayOptic, RHS: ArrayOptic>: ArrayOptic
-where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part {
+where LHS.Whole == RHS.Whole, LHS.Part == RHS.Part, LHS.NewPart == RHS.NewPart, LHS.NewWhole == RHS.NewWhole, LHS.NewWhole == LHS.Whole {
 	let lhs: LHS
 	let rhs: RHS
 	
 	public typealias Whole = LHS.Whole
+	public typealias NewWhole = LHS.NewWhole
 	public typealias Part = LHS.Part
+	public typealias NewPart = LHS.NewPart
 	
 	public func getAll(_ whole: Whole) -> [Part] {
 		lhs.getAll(whole) + rhs.getAll(whole)
 	}
 	
 	public func updateAll(
-		_ whole: inout Whole,
-		_ f: @escaping (inout Part) -> Void
-	) -> Void {
-		lhs.updateAll(&whole, f)
-		rhs.updateAll(&whole, f)
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		var result = whole
+		result = lhs.updateAll(result, f)
+		return rhs.updateAll(result, f)
 	}
 }
 

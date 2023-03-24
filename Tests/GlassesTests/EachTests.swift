@@ -18,7 +18,7 @@ class EachTests: XCTestCase {
 			}
 		}
 		
-		namesExceptFirst.updateAll(&uppercased, { $0 = $0.uppercased() })
+		uppercased = namesExceptFirst.updateAll(uppercased, { $0.uppercased() })
 		
 		XCTAssertEqual(
 			namesExceptFirst.getAll(uppercased),

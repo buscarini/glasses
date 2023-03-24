@@ -1,8 +1,11 @@
 import Foundation
 
-public struct Filter<O: ArrayOptic>: ArrayOptic {
+public struct Filter<O: ArrayOptic>: ArrayOptic
+where O.NewPart == O.Part, O.NewWhole == O.Whole {
 	public typealias Whole = O.Whole
+	public typealias NewWhole = O.NewWhole
 	public typealias Part = O.Part
+	public typealias NewPart = O.NewPart
 	
 	public let filter: (Part) -> Bool
 	public let optic: O
@@ -20,13 +23,16 @@ public struct Filter<O: ArrayOptic>: ArrayOptic {
 		optic.getAll(whole).filter(self.filter)
 	}
 	
-	public func updateAll(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		optic.updateAll(&whole) { part in
+	public func updateAll(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		optic.updateAll(whole) { part in
 			guard self.filter(part) else {
-				return
+				return part
 			}
 			
-			f(&part)
+			return f(part)
 		}
 	}
 }

@@ -1,9 +1,11 @@
 import Foundation
 
 public struct At<L: LensOptic, Element>: OptionalOptic
-where L.Part == [Element] {
+where L.Part == [Element], L.NewPart == L.Part, L.NewWhole == L.Whole {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = Element
+	public typealias NewPart = Element
 	
 	public let index: Array.Index
 	public let lens: L
@@ -27,21 +29,27 @@ where L.Part == [Element] {
 		return results[self.index]
 	}
 	
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { elements in
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole) { elements in
 			guard elements.count > self.index else {
-				return
+				return elements
 			}
 			
-			var item = elements[self.index]
-			f(&item)
-			elements[self.index] = item
+			var result = elements
+			result[self.index] = f(result[self.index])
+			return result
 		}
 	}
-	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		tryUpdate(&whole) { part in
-			part = newValue
+
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
 		}
 	}
 }

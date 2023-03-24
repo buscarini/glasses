@@ -1,8 +1,10 @@
 import Foundation
 
-public struct Last<L: LensOptic, Element>: OptionalOptic where L.Part == [Element] {
+public struct Last<L: LensOptic, Element>: OptionalOptic where L.Part == [Element], L.NewPart == L.Part {
 	public typealias Whole = L.Whole
+	public typealias NewWhole = L.NewWhole
 	public typealias Part = Element
+	public typealias NewPart = Element
 	
 	public let lens: L
 	
@@ -17,21 +19,27 @@ public struct Last<L: LensOptic, Element>: OptionalOptic where L.Part == [Elemen
 		lens.get(whole).last
 	}
 	
-	public func tryUpdate(_ whole: inout Whole, _ f: @escaping (inout Part) -> Void) {
-		lens.update(&whole) { elements in
-			guard elements.count > 0 else {
-				return
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		lens.update(whole) { elements in
+			guard let last = elements.last else {
+				return elements
 			}
 			
-			var last = elements.last!
-			f(&last)
-			elements[elements.endIndex.advanced(by: -1)] = last
+			var result = elements
+			result[result.endIndex.advanced(by: -1)] = f(last)
+			return result
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, to newValue: Part) {
-		tryUpdate(&whole) { part in
-			part = newValue
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		tryUpdate(whole) { _ in
+			newValue
 		}
 	}
 }
