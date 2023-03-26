@@ -13,11 +13,12 @@ public protocol OptionalOptic<Whole, Part> {
 	func trySet(_ whole: Whole, to: NewPart) -> NewWhole
 }
 
-extension OptionalOptic where Part == NewPart, Whole == NewWhole {
+extension OptionalOptic {
 	public func tryUpdate(
 		_ whole: inout Whole,
 		_ f: @escaping (inout Part) -> Void
-	) -> Void {
+	) -> Void
+	where Part == NewPart, Whole == NewWhole {
 		whole = self.tryUpdate(whole, { part in
 			var copy = part
 			f(&copy)
@@ -28,7 +29,8 @@ extension OptionalOptic where Part == NewPart, Whole == NewWhole {
 	public func tryUpdate(
 		_ whole: Whole,
 		_ f: @escaping (inout Part) -> Void
-	) -> Whole {
+	) -> Whole
+	where Part == NewPart, Whole == NewWhole {
 		self.tryUpdate(whole) { part in
 			var result = part
 			f(&result)
@@ -39,17 +41,24 @@ extension OptionalOptic where Part == NewPart, Whole == NewWhole {
 	public func tryUpdate(
 		_ whole: inout Whole,
 		_ f: @escaping (Part) -> NewPart
-	) -> Void {
+	) -> Void
+	where Part == NewPart, Whole == NewWhole {
 		self.tryUpdate(&whole) { part in
 			part = f(part)
 		}
 	}
 	
-	public func trySet(_ whole: inout Whole, to newPart: NewPart) {
+	public func trySet(
+		_ whole: inout Whole,
+		to newPart: NewPart
+	)  where Part == NewPart, Whole == NewWhole {
 		whole = self.trySet(whole, to: newPart)
 	}
 	
-	public func trySetting(_ whole: Whole, to newValue: NewPart) -> Whole {
+	public func trySetting(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> Whole where Part == NewPart, Whole == NewWhole {
 		var copy = whole
 		self.trySet(&copy, to: newValue)
 		return copy

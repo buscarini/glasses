@@ -16,10 +16,11 @@ public protocol ArrayOptic<Whole, Part, NewPart, NewWhole> {
 }
 
 extension ArrayOptic {
-	func updateAll(
+	public func updateAll(
 		_ whole: inout Whole,
 		_ f: @escaping (inout Part) -> Void
-	) -> Void where NewWhole == Whole, NewPart == Part {
+	) -> Void
+	where NewWhole == Whole, NewPart == Part {
 		whole = self.updateAll(whole) { part in
 			var copy = part
 			f(&copy)
