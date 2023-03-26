@@ -6,10 +6,10 @@ where O.NewPart == O.Part, O.NewWhole == O.Whole {
 	public typealias NewWhole = O.NewWhole
 	public typealias Part = O.Part
 	public typealias NewPart = O.NewPart
-	
+
 	public let filter: (Part) -> Bool
 	public let optic: O
-	
+
 	@inlinable
 	public init(
 		filter: @escaping (Part) -> Bool,
@@ -18,11 +18,11 @@ where O.NewPart == O.Part, O.NewWhole == O.Whole {
 		self.filter = filter
 		self.optic = build()
 	}
-	
+
 	public func getAll(_ whole: Whole) -> [Part] {
 		optic.getAll(whole).filter(self.filter)
 	}
-	
+
 	public func updateAll(
 		_ whole: Whole,
 		_ f: @escaping (Part) -> NewPart
@@ -31,7 +31,7 @@ where O.NewPart == O.Part, O.NewWhole == O.Whole {
 			guard self.filter(part) else {
 				return part
 			}
-			
+
 			return f(part)
 		}
 	}

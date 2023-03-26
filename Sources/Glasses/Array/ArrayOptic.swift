@@ -46,7 +46,7 @@ extension ArrayOptic where NewPart == Part, NewWhole == Whole {
 		}
 	}
 	
-	func updatingAll(_ whole: Whole, _ f: @escaping (inout Part) -> Void) -> Whole {
+	public func updatingAll(_ whole: Whole, _ f: @escaping (inout Part) -> Void) -> Whole {
 		self.updateAll(whole) { part in
 			var copy = part
 			f(&copy)
@@ -61,15 +61,18 @@ extension ArrayOptic where NewPart == Part, NewWhole == Whole {
 	}
 }
 
-extension ArrayOptic {
-	func map<NewPart>(
-		from: @escaping (NewPart) -> Part,
-		to: @escaping (Part) -> NewPart
-	) {
-		
-		
-	}
-}
+//extension ArrayOptic {
+//	func map<Whole0, NewWhole0>(
+//		to: @escaping (Whole0) -> Whole,
+//		from: (NewWhole) -> NewWhole0
+//	) -> some ArrayOptic<Whole0, Part, NewWhole0, NewPart> {
+//		Map(
+//			{ self },
+//			from: from,
+//			to: to
+//		)
+//	}
+//}
 
 public struct ArrayDefaultOptic<Element, NewElement>: ArrayOptic {
 	public typealias Whole = Array<Element>
