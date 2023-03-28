@@ -3,8 +3,6 @@ import Glasses
 import XCTest
 
 class SortedTests: XCTestCase {
-	
-//	mike, louis, jessica
 	func testSorted() {
 		let people = Lens {
 			\Company.employees
@@ -50,9 +48,9 @@ class SortedTests: XCTestCase {
 			modified.employees,
 			[
 				joe,
-				louis,
 				jessica,
-				mike
+				mike,
+				louis
 			]
 		)
 	}
