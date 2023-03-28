@@ -33,7 +33,9 @@ extension Setter {
 	}
 }
 
-public protocol LensOptic<Whole, Part>: Getter, Setter {}
+public protocol LensOptic<Whole, Part, NewWhole, NewPart>: Getter, Setter {}
+
+public typealias SimpleLensOptic<Whole, Part> = LensOptic<Whole, Part, Whole, Part>
 
 extension LensOptic {
 	public func `set`(

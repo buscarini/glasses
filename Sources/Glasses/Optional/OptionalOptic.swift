@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol OptionalOptic<Whole, Part> {
+public protocol OptionalOptic<Whole, Part, NewWhole, NewPart> {
 	associatedtype Whole
 	associatedtype NewWhole
 	associatedtype Part
@@ -12,6 +12,8 @@ public protocol OptionalOptic<Whole, Part> {
 	
 	func trySet(_ whole: Whole, to: NewPart) -> NewWhole
 }
+
+public typealias SimpleOptionalOptic<Whole, Part> = OptionalOptic<Whole, Part, Whole, Part>
 
 extension OptionalOptic {
 	public func tryUpdate(
@@ -62,6 +64,40 @@ extension OptionalOptic {
 		var copy = whole
 		self.trySet(&copy, to: newValue)
 		return copy
+	}
+}
+
+public struct OptionalRawOptic<Whole, Part, NewWhole, NewPart>: OptionalOptic {
+	public let _tryGet: (Whole) -> Part?
+	public let _tryUpdate: (Whole, @escaping (Part) -> NewPart) -> NewWhole
+	public let _trySet: (Whole, NewPart) -> NewWhole
+	
+	public init(
+		tryGet: @escaping (Whole) -> Part?,
+		tryUpdate: @escaping (Whole, @escaping (Part) -> NewPart) -> NewWhole,
+		trySet: @escaping (Whole, NewPart) -> NewWhole
+	) {
+		self._tryGet = tryGet
+		self._tryUpdate = tryUpdate
+		self._trySet = trySet
+	}
+	
+	public func tryGet(_ whole: Whole) -> Part? {
+		_tryGet(whole)
+	}
+
+	public func tryUpdate(
+		_ whole: Whole,
+		_ f: @escaping (Part) -> NewPart
+	) -> NewWhole {
+		_tryUpdate(whole, f)
+	}
+	
+	public func trySet(
+		_ whole: Whole,
+		to newValue: NewPart
+	) -> NewWhole {
+		_trySet(whole, newValue)
 	}
 }
 

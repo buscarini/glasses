@@ -1,7 +1,7 @@
 import Foundation
 
 /// Get all the elements as an array, update them one by one
-public protocol ArrayOptic<Whole, Part, NewPart, NewWhole> {
+public protocol ArrayOptic<Whole, Part, NewWhole, NewPart> {
 	associatedtype Whole
 	associatedtype NewWhole
 	associatedtype Part
@@ -14,6 +14,8 @@ public protocol ArrayOptic<Whole, Part, NewPart, NewWhole> {
 		_ f: @escaping (Part) -> NewPart
 	) -> NewWhole
 }
+
+public typealias SimpleArrayOptic<Whole, Part> = ArrayOptic<Whole, Part, Whole, Part>
 
 extension ArrayOptic {
 	public func updateAll(
